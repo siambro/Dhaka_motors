@@ -38,7 +38,7 @@
 													and m.cID=c.cID
 													and m.saleID=si.saleID
 													
-													and s.dealer_id=0
+													and s.dealer_id=1
 													and m.saleID >= 0
 													";
 											

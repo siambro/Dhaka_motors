@@ -58,10 +58,10 @@
 
 
 						$query="select * 
-								from motorcycle_info m, stock_info s 
-								where m.sID=s.sID 
-								and s.dealer_id=0
-								and m.saleID = 0";
+						from motorcycle_info m, stock_info s 
+						where m.sID=s.sID 
+						and s.dealer_id=1
+						and m.saleID = 0";
 						$result=mysqli_query($con,$query);
 						if(mysqli_num_rows($result)>0){
 							while($row=mysqli_fetch_array($result, MYSQLI_ASSOC)){
