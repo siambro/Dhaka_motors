@@ -7,20 +7,38 @@
 		
 		$userName = mysqli_real_escape_string($connection, $_POST['userName']);
 		$password = mysqli_real_escape_string($connection, $_POST['password']);
-		$level = mysqli_real_escape_string($connection, $_POST['level']);
+		// $level = mysqli_real_escape_string($connection, $_POST['level']);
 		
 		$query2= "select * from staff_info where userName = '".$userName."' and password = '" .$password. "'";
-		//$query2= "select * from signup where userName = '".$userName."' and password = '" .$password. "' and userLevel='" .$userLevel. "'";
+		$query1= "select * from customer where phone = '".$userName."' and password = '" .$password. "'";
 		
 		$result2 = mysqli_query($connection, $query2);
-		
-		if(mysqli_fetch_array($result2)){
+		$result1 = mysqli_query($connection, $query1);
+
+		if(mysqli_num_rows($result2)>0){
+			$row=mysqli_fetch_array($result2,MYSQLI_ASSOC);
 			$_SESSION['login'] = true;
 			$_SESSION['userName'] = $userName;
 			$_SESSION['password'] = $password;
-			$_SESSION['level'] = $level;
-			
+			// $_SESSION['level'] = $level;
+			$level = $row['level'];
+// echo $level;
+// exit;
+			if($level == "manager"){
+				header('location: Manager/index.php');
+			}
+			else if($level == "admin"){
+				header('location: Administrator/index.php');
+			}else{
+				header('location: login.php');
+			}
+
+		}else if(mysqli_fetch_array($result1)){
+			$_SESSION['login'] = true;
+			$_SESSION['userName'] = $userName;
+			$_SESSION['password'] = $password;
 			header('location: Customer/index.php');
+
 		}else{
 			header('location: login.php?error1');
 		}
