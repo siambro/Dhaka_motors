@@ -59,7 +59,7 @@ if(isset($_GET['error'])){
 						if(mysqli_num_rows($result)>0){
 							while($row=mysqli_fetch_array($result, MYSQLI_ASSOC)){
 							echo "<tr>";
-							echo "<td> <input value='".$row['mID']."' type='radio' name='num[]' required</td>";
+							echo "<td><input type='radio' class='flat-red' name='num[]' value='".$row['mID']."' required></td>";
 							//echo "<td>".$row['id']."</td>";
 							//echo "<td><img height='100px' width='100px' src=".$row['photo']."></td>";
 							

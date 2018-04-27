@@ -57,7 +57,7 @@ if(isset($_GET['error'])){
 							if(mysqli_num_rows($result)>0){
 								while($row=mysqli_fetch_array($result, MYSQLI_ASSOC)){
 								echo "<tr>";
-								echo "<td> <input value='".$row['parts_id']."' type='checkbox' name='num[]'> </td>";												
+								echo "<td> <input class='flat-red' value='".$row['parts_id']."' type='checkbox' name='num[]'> </td>";												
 								echo "<td>".$row['parts_type']."</td>";
 								echo "<td>".$row['parts_name']."</td>";
 								echo "<td>".$row['price']."</td>";

@@ -2,7 +2,7 @@
  include 'layouts/head.php';
  protect_page_redirect();
 ?>
-<div class="container">
+<div class="content">
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
 			<div class="login-panel panel panel-default">

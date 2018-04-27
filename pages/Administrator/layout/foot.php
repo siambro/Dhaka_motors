@@ -31,6 +31,9 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+
+<script src="../../bower_components/raphael/raphael.min.js"></script>
+<script src="../../bower_components/morris.js/morris.min.js"></script>
 <!-- bootstrap datepicker -->
 <!--<script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
  page script -->
@@ -56,6 +59,19 @@
 	//})
   
   
+   Morris.Line({
+      element: 'chart',
+      resize: true,
+      data: [
+        <?php echo $chart_data; ?>
+      ],
+      xkeys: 'year',
+      ykeys: ['amount'],
+      labels: ['amount'],
+      lineColors: ['#a0d0e0', '#3c8dbc'],
+      hideHover: 'auto'
+    });
+
 </script>
 
 </body>

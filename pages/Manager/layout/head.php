@@ -27,10 +27,12 @@
   <link rel="stylesheet" href="../../bower_components/bootstrap-daterangepicker/daterangepicker.css">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-  
+  <!-- Select2 -->
+  <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-  
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="../../plugins/iCheck/all.css">
   <!-- JQuery for fade -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
