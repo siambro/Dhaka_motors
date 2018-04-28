@@ -82,32 +82,49 @@
           <!-- Messages: style can be found in dropdown.less-->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              
+              <img src="../../dist/img/avatar5.png" class="user-image" alt="User Image">
               <span class="hidden-xs">
-				  <?php if(logged_in()==true){
-							echo($_SESSION['userName'].'</b>'); 
-						}else{
-							echo "No User";
-						}
-					?>
-			</span>
+              <?php 
+              if(logged_in()==true){
+							  echo($_SESSION['userName']); 
+              }else{
+                echo "No User";
+              }
+              ?>
+              </span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                
+                <img src="../../dist/img/avatar5.png" class="img-circle" alt="User Image">
+
                 <p>
-                  <?php if(logged_in()==true){
-						echo($_SESSION['userName'].'</b>'); 
-					}else{
-						echo "No User";
-					}
-					?>
-                  
+                <?php 
+                  if(logged_in()==true){
+                    echo($_SESSION['userName']); 
+                  }else{
+                    echo "No User";
+                  }
+                ?>
+                  <small>Member since Nov. 2012</small>
                 </p>
               </li>
               <!-- Menu Body -->
-              
+              <li class="user-body">
+                <div class="row">
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Followers</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Sales</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Friends</a>
+                  </div>
+                </div>
+                <!-- /.row -->
+              </li>
+              <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
@@ -118,7 +135,6 @@
               </li>
             </ul>
           </li>
-          <!-- Control Sidebar Toggle Button -->
          
         </ul>
       </div>
