@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Top Navigation</title>
+  <title>Dhaka Motors | Customer</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -50,7 +50,8 @@
 
 </head>
 <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
-<body class="hold-transition skin-black layout-top-nav" >
+<body class="hold-transition skin-black layout-top-nav">
+
 <div class="wrapper">
 
   <header class="main-header">
@@ -66,8 +67,6 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Link</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Own information <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -80,6 +79,9 @@
                 <li><a href="#">One more separated link</a></li> -->
               </ul>
             </li>
+            <li><a href="info.php">Info <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Help</a></li>
+            <li><a href="#">About DM</a></li>
           </ul>
           <form class="navbar-form navbar-left" role="search">
             <div class="form-group">

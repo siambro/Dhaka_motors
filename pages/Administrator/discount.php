@@ -33,14 +33,14 @@
                 <thead>
                 <tr>
                   <tr>
-						<th>Edit</th>
+						<!-- <th>Edit</th> -->
 						<th>Delete</th>
 						
 						
 						<th>Discount From</th>
 						<th>Discount To</th>
 						<th>Parcentage(%) </th>
-						<th>Status</th>
+						<th>Extende</th>
 					</tr>
                 </tr>
                 </thead>
@@ -52,7 +52,18 @@
 					   if(conf)
 						  window.location=anchor.attr("href");
 					}
+					function confirmationSet(anchor)
+					{
+					   var conf = confirm('Are you sure want to Set this record?');
+					   if(conf)
+						  window.location=anchor.attr("href");
+					}
 				</script>	
+				<script>
+				 $( function() {
+					$( "#datepicker2" ).datepicker({ minDate: 1, maxDate: "+1M +10D",dateFormat:"yy-mm-dd"});
+				  } );
+				</script>
 					<?php
 					 $con=mysqli_connect('localhost','root','','dhaka_motors');
 
@@ -64,7 +75,7 @@
 						if(mysqli_num_rows($result)>0){
 							while($row=mysqli_fetch_array($result, MYSQLI_ASSOC)){
 								echo "<tr>";
-								echo "<td><a href='dEdit.php?discount_id=".$row['discount_id']."'><span class='fa fa-edit'></span></a></td>";
+								// echo "<td><a href='dEdit.php?discount_id=".$row['discount_id']."'><span class='fa fa-edit'></span></a></td>";
 								//echo "<td><a href=dDelete.php?discount_id=".$row['discount_id']."'><span class='fa fa-minus-circle'></span></a></td>";
 								
 								echo "<td><a onclick='javascript:confirmationDelete($(this));return false;' href='deleteDiscount.php?discount_id=".$row['discount_id']."'>x</a></td>";
@@ -72,8 +83,20 @@
 								echo "<td>".$row['d_from']."</td>";
 								echo "<td>".$row['d_to']."</td>";
 								echo "<td>".$row['percentage']."</td>";
-								echo "<td>".$row['status']."</td>";
-								
+								// echo "<td>".$row['status']."</td>";
+								// echo "<td><div class='form-group'><div class='input-group date'><input type='text' name='extend' class='form-control' value='".$row['d_to']."' id='datepicker2'><div class='input-group-addon'><input type='submit' class='btn btn-success btn-sm'></div></div></div></td>";
+
+								echo "<td><form class='form-horizontal' action='admin_discountManager.php' method='POST'>
+								<div class='form-group margin-bottom-none'>
+									<div class='col-sm-6'>
+										<input type='text' class='form-control input-sm' value='".$row['d_to']."' name=exp id='datepicker2'>
+									</div>
+									<div class='col-sm-4'>
+									<input type='hidden' value='".$row['discount_id']."' name='discount_id'>
+										<button type='submit' class='btn btn-danger pull-right btn-block btn-sm' name='set' onclick='javascript:confirmationSet($(this));return false;'>Set</button>
+									</div>
+								</div>
+							</form></td>";
 								echo "</tr>";
 							}
 						}else{

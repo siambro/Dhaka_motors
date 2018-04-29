@@ -64,24 +64,24 @@
           
 
           <div class="box">
-            <div class="box-header">
+            <!-- <div class="box-header">
               <h3 class="box-title">Data Table With Full Features</h3>
-            </div>
+            </div> -->
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="example1" class="table table-striped">
                 <thead>
                 <tr>
                   <th>Type</th>
-					<th>Name</th>
-					<th>Model</th>
-					<th>Engine</th>
-					<th>Chassis</th>
-					<th>CC</th>
-					<th>Color</th>
-					<th>Price</th>
-					<th>Edit</th>
-					<th>Delete</th>
+                  <th>Name</th>
+                  <th>Model</th>
+                  <th>Engine</th>
+                  <th>Chassis</th>
+                  <th>CC</th>
+                  <th>Color</th>
+                  <th>Price</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
                 </tr>
                 </thead>
                 <tbody>

@@ -26,10 +26,9 @@
     <!-- Main content -->
     <section class="content">
 
-      <div class="row">
+      <!-- <div class="row">
         <div id="chart"></div>
-	  <!-- Work Here -->
-      </div>
+      </div> -->
 
       <div class= "row">
       <div class="col-md-12">
@@ -58,14 +57,14 @@
                     }
                   
                   }else{
-                    echo "no";
+                    $total="no";
                   }										
                 ?>
 
 
-            <div class="widget-user-header bg-green-active">
-              <h3 class="widget-user-username"><?php echo "This Month: $month";?></h3>
-              <h5 class="widget-user-desc"><?php echo "Total Sale: $total";?></h5>
+            <div class="widget-user-header bg-green-active" align="center">
+              <h3 class="widget-user-username"><?php echo "$month";?></h3>
+              <!-- <h5 class="widget-user-desc"><?php echo "Total Sale: $total";?></h5> -->
             </div>
             
             <?php
@@ -99,18 +98,61 @@
                   <!-- /.description-block -->
                 </div>
                 <!-- /.col -->
+
+                <?php
+									// $date=date('m');
+                  // $con=mysqli_connect('localhost','root','','dhaka_motors');
+                  $query="select count(DISTINCT s.saleID) as count
+                  from motorcycle_info m, sale_info s 
+                  where m.saleID= s.saleID
+                  and MONTH(s.sale_date) = '".$date."'
+                  group by s.saleID";
+                      
+                  //$query="select count(mID) from motorcycle_info where branch ='Dhaka' and motorcycle_status=0";
+                  $result=mysqli_query($con,$query);
+                  if(mysqli_num_rows($result)>0){
+                    while($row=mysqli_fetch_array($result, MYSQLI_ASSOC)){
+                      $totalsale=$row['count'];
+                      // echo "$total";
+                    }
+                  
+                  }else{
+                    $totalsale="no";
+                  }										
+                ?>
+
+
                 <div class="col-sm-4 border-right">
                   <div class="description-block">
-                    <h5 class="description-header">13,000</h5>
-                    <span class="description-text">FOLLOWERS</span>
+                    <h5 class="description-header"><?php echo $totalsale?></h5>
+                    <span class="description-text">SALE</span>
                   </div>
                   <!-- /.description-block -->
                 </div>
                 <!-- /.col -->
+
+                 <?php
+									
+                  $con=mysqli_connect('localhost','root','','dhaka_motors');
+                  $query="select count(parts_id) 
+                      from parts_info";
+                      
+                  //$query="select count(mID) from motorcycle_info where branch ='Dhaka' and motorcycle_status=0";
+                  $result=mysqli_query($con,$query);
+                  if(mysqli_num_rows($result)>0){
+                    while($row=mysqli_fetch_array($result, MYSQLI_ASSOC)){
+                      $totalparts=$row['count(parts_id)'];
+                      // echo "$total";
+                    }
+                  
+                  }else{
+                    echo "no";
+                  }										
+                ?>
                 <div class="col-sm-4">
                   <div class="description-block">
-                    <h5 class="description-header">35</h5>
-                    <span class="description-text">PRODUCTS</span>
+                    <h5 class="description-header"><?php echo $totalparts?></h5>
+                    <span class="description-text">Parts</span>
                   </div>
                   <!-- /.description-block -->
                 </div>

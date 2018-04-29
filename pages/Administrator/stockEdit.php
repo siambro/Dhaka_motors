@@ -58,7 +58,7 @@
                         $result = mysqli_query($connection, $query);
                         if(mysqli_num_rows($result)>0){
                           while($row=mysqli_fetch_array($result, MYSQLI_ASSOC)){
-                            echo "<option value='".$row['miType']."' if($mType =='".$row['miType']."') echo selected>".$row['miType']."</option>";
+                            echo "<option value='".$row['miType']."' if('".$row['miType']."'==$mType) echo selected>".$row['miType']."</option>";
                           }
                         }else{
                           echo 'No Data';
