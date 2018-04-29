@@ -110,20 +110,27 @@
 				  } );
 				</script>
                 <!-- select -->
-                <div class="form-group">
-					<label>Date From</label>
-  
-					  <input type="text" class="form-control " name="dFrom" id="datepicker">
-					
+       		 <div class="form-group">
+							<label>Date From</label>
+							<div class="input-group date">
+							
+									<input type="text" class="form-control pull-right" name="dFrom" id="datepicker">
+									<div class="input-group-addon">
+									<i class="fa fa-calendar"></i>
+								</div>
+							</div>
 					<!-- /.input group -->
 				  </div>
 				  
 				  <div class="form-group">
-					<label>Date To</label>
-				  
-					  <input type="text" class="form-control " name="dTo" id="datepick">
-					
-					<!-- /.input group -->
+						<label>Date To</label>
+						<div class="input-group date">
+							<input type="text" class="form-control " name="dTo" id="datepick">
+							<div class="input-group-addon">
+								<i class="fa fa-calendar"></i>
+							</div>
+						</div>
+						<!-- /.input group -->
 				  </div>
 				
 				<!-- text input -->

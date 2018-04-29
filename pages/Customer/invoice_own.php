@@ -48,7 +48,7 @@ date_default_timezone_set('Asia/Dhaka');
  
 
   <!-- Content Wrapper. Contains page content -->
- <div class="content-wrapper">
+ <div class="container">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>

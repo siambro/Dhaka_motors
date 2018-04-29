@@ -2,8 +2,48 @@
  include 'layout/head.php';
  
 ?>
+<style>
+    .example-modal .modal {
+      position: relative;
+      top: auto;
+      bottom: auto;
+      right: auto;
+      left: auto;
+      display: block;
+      z-index: 1;
+    }
+
+    .example-modal .modal {
+      background: transparent !important;
+    }
+  </style>
+
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+
+			<div class="modal modal-success fade" id="modal-success">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Success Modal</h4>
+              </div>
+              <div class="modal-body">
+                <p>One fine body&hellip;</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline">Save changes</button>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -81,6 +121,11 @@
 							//echo "<td>".$row['stock_time']."</td>";
 							//echo "<td>".$row['branch']."</td>";
 							echo "<td><a href='stockEdit.php?mID=".$row['mID']."'><span class='fa fa-edit'></span></a></td>";
+							// <a class='btn btn-app'>
+              //   <i class='fa fa-edit' data-toggle='modal' data-target='#modal-success'></i> Edit
+							// </a>
+							
+							// echo "<td><a><span class='fa fa-edit' data-toggle='modal' data-target='#modal-success'></span></a></td>";
 							echo "<td><a onclick='javascript:confirmationDelete($(this));return false;' href='stockDelete.php?mID=".$row['mID']."'><span class='fa fa-minus-circle'></span></a></td>";
 						   
 							

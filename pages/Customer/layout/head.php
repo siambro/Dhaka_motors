@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Dhaka Motors | Dashboard</title>
+  <title>AdminLTE 2 | Top Navigation</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -17,16 +17,6 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
-  <!-- Morris chart -->
-  <link rel="stylesheet" href="../../bower_components/morris.js/morris.css">
-  <!-- jvectormap -->
-  <link rel="stylesheet" href="../../bower_components/jvectormap/jquery-jvectormap.css">
-  <!-- Date Picker -->
-  <link rel="stylesheet" href="../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="../../bower_components/bootstrap-daterangepicker/daterangepicker.css">
-  <!-- bootstrap wysihtml5 - text editor -->
-  <link rel="stylesheet" href="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,51 +27,82 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-  
-  
-  
+
 <?php
 	session_start();
 	$connection = mysqli_connect("localhost", "root", "", "dhaka_motors");
 	include '../functions.php';
-	protect_page();
+  protect_page();
+  
+
+  
+		$query="select * 
+				from customer 
+				where phone='".$_SESSION['userName']."'";
+        $result=mysqli_query($connection,$query);
+        if($result){
+			
+          $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
+        $name = $row['name'];
+        $phone = $row['phone'];
+        }
 ?>
-  
-  
+
 </head>
-<body class="hold-transition skin-black sidebar-mini">
+<!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
+<body class="hold-transition skin-black layout-top-nav" >
 <div class="wrapper">
 
   <header class="main-header">
-    <!-- Logo -->
-    <a href="index.php" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>D</b>Mt</span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Dhaka</b>Motors</span>
-    </a>
-    <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-        <span class="sr-only">Toggle navigation</span>
-      </a>
+      <div class="container">
+        <div class="navbar-header">
+          <a href="index.php" class="navbar-brand"><b>Dhaka</b>Motors</a>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+            <i class="fa fa-bars"></i>
+          </button>
+        </div>
 
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-          <!-- Messages: style can be found in dropdown.less-->
-          
-          <!-- Control Sidebar Toggle Button -->
-          <li class="dropdown user user-menu">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Own information <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="own_motorcycle.php">My Bike</a></li>
+                <li><a href="own_booking.php">My Booking</a></li>
+                <!-- <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+                <li class="divider"></li>
+                <li><a href="#">One more separated link</a></li> -->
+              </ul>
+            </li>
+          </ul>
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" id="navbar-search-input" placeholder="Search">
+            </div>
+          </form>
+        </div>
+        <!-- /.navbar-collapse -->
+        <!-- Navbar Right Menu -->
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+            <!-- Messages: style can be found in dropdown.less-->
+            
+            <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../dist/img/avatar5.png" class="user-image" alt="User Image">
               <span class="hidden-xs">
               <?php 
-              if(logged_in()==true){
-							  echo($_SESSION['userName']); 
-              }else{
-                echo "No User";
-              }
+              
+							  echo $name; 
+              
+               
+             
               ?>
               </span>
             </a>
@@ -92,11 +113,7 @@
 
                 <p>
                 <?php 
-                  if(logged_in()==true){
-                    echo($_SESSION['userName']); 
-                  }else{
-                    echo "No User";
-                  }
+                   echo $phone; 
                 ?>
                   <small>Customer</small>
                 </p>
@@ -116,53 +133,13 @@
                 </div>
                 <!-- /.row -->
               </li>
-              <!-- Menu Footer-->
-              <!-- <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
-                </div>
-                <div class="pull-right">
-                  <a href="../logout.php" class="btn btn-default btn-flat">Sign out</a>
-                </div>
-              </li> -->
-            </ul>
-          </li>
-        </ul>
+          </ul>
+        </div>
+        <!-- /.navbar-custom-menu -->
       </div>
+      <!-- /.container-fluid -->
     </nav>
   </header>
-  <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-      <!-- Sidebar user panel -->
-     
-      <ul class="sidebar-menu" data-widget="tree">
-        <li class="header"></li>
-        <li class="active treeview">
-          <a href="index.php">
-            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-            
-          </a>
-          
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-files-o"></i>
-            <span>My Information</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="own_motorcycle.php"><i class="fa fa-circle-o"></i> Motorcycle</a></li>
-            <li><a href="own_booking.php"><i class="fa fa-circle-o"></i> Bookings</a></li>
-            
-           
-          </ul>
-        </li>
-        <li><a href="information.php"><i class="fa fa-circle-o"></i> Informations</a></li>
-      </ul>
-    </section>
-    <!-- /.sidebar -->
-  </aside>
+  <!-- Full Width Column -->
+  <div class="content-wrapper">
+

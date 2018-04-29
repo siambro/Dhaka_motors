@@ -53,71 +53,74 @@
                   <label>Motorcycle Type</label>
                   <select class="form-control" name="mType">
                     <?php 
-					$connection = mysqli_connect("localhost", "root", "", "dhaka_motors");
-					$query = "select miType from motorcycle_type" ;	
-					$result = mysqli_query($connection, $query);
-					if(mysqli_num_rows($result)>0){
-						while($row=mysqli_fetch_array($result, MYSQLI_ASSOC)){
-							echo "<option value='".$row['miType']."' if($mType =='".$row['miType']."') echo selected>".$row['miType']."</option>";
-						}
-					}else{
-						echo 'No Data';
-					}
-					?>
-					</select>
-                </div>
-				<div class="form-group">
-                  <label>Motorcycle Name</label>
-                  <select class="form-control" name="mName">
-                    <?php 
-					$connection = mysqli_connect("localhost", "root", "", "dhaka_motors");
-					$query = "select miName from motorcycle_name" ;	
-					$result = mysqli_query($connection, $query);
-					if(mysqli_num_rows($result)>0){
-						while($row=mysqli_fetch_array($result, MYSQLI_ASSOC)){
-							echo "<option value='".$row['miName']."' if($mName =='".$row['miName']."') echo 'selected'>".$row['miName']."</option>";
-						}
-					}else{
-						echo 'No Data';
-					}
-					?>
+                        $connection = mysqli_connect("localhost", "root", "", "dhaka_motors");
+                        $query = "select miType from motorcycle_type" ;	
+                        $result = mysqli_query($connection, $query);
+                        if(mysqli_num_rows($result)>0){
+                          while($row=mysqli_fetch_array($result, MYSQLI_ASSOC)){
+                            echo "<option value='".$row['miType']."' if($mType =='".$row['miType']."') echo selected>".$row['miType']."</option>";
+                          }
+                        }else{
+                          echo 'No Data';
+                        }
+                        ?>
+                        </select>
+                              </div>
+                      <div class="form-group">
+                                <label>Motorcycle Name</label>
+                                <select class="form-control" name="mName">
+                                  <?php 
+                        $connection = mysqli_connect("localhost", "root", "", "dhaka_motors");
+                        $query = "select miName from motorcycle_name" ;	
+                        $result = mysqli_query($connection, $query);
+                        if(mysqli_num_rows($result)>0){
+                          while($row=mysqli_fetch_array($result, MYSQLI_ASSOC)){
+                            echo "<option value='".$row['miName']."' if($mName =='".$row['miName']."') echo 'selected'>".$row['miName']."</option>";
+                          }
+                        }else{
+                          echo 'No Data';
+                        }
+                        ?>
                   </select>
                 </div>
 				<div class="form-group">
                   <label>Motorcycle Model</label>
                   <select class="form-control" name="model">
                     <?php 
-					$connection = mysqli_connect("localhost", "root", "", "dhaka_motors");
-					$query = "select miModel from motorcycle_model" ;	
-					$result = mysqli_query($connection, $query);
-					if(mysqli_num_rows($result)>0){
-						while($row=mysqli_fetch_array($result, MYSQLI_ASSOC)){
-							echo "<option value='".$row['miModel']."' if($model =='".$row['miModel']."') echo selected>".$row['miModel']."</option>";
-						}
-					}else{
-						echo 'No Data';
-					}
-					?>
-                  </select>
+                        $connection = mysqli_connect("localhost", "root", "", "dhaka_motors");
+                        $query = "select miModel from motorcycle_model" ;	
+                        $result = mysqli_query($connection, $query);
+                        if(mysqli_num_rows($result)>0){
+                          while($row=mysqli_fetch_array($result, MYSQLI_ASSOC)){
+                            echo "<option value='".$row['miModel']."' if($model =='".$row['miModel']."') echo selected>".$row['miModel']."</option>";
+                          }
+                        }else{
+                          echo 'No Data';
+                        }
+                        ?>
+                                </select>
+                              </div>
+                      <!-- text input -->
+                              <div class="form-group">
+                                <label>Engine No</label>
+                                <input type="text" class="form-control" name="engineNo" value="<?php echo $engineNo ?>" placeholder="" required>
+                              </div><div class="form-group">
+                                <label>Chassis No</label>
+                                <input type="text" class="form-control" name="chassisNo" value="<?php echo $chassisNo ?>" placeholder="" required>
+                              </div><div class="form-group">
+                                <label>CC</label>
+                                <input type="text" class="form-control" name="cc" placeholder="" value="<?php echo $cc ?>" required>
+                              </div><div class="form-group">
+                                <label>Body Color </label>
+                                <input type="text" class="form-control" name="color" placeholder="" value="<?php echo $color ?>" required>
+                              </div><div class="form-group">
+                                <label>Price</label>
+                                <input type="number" class="form-control" name="price" placeholder="" value="<?php echo $price ?>" required>
                 </div>
-				<!-- text input -->
                 <div class="form-group">
-                  <label>Engine No</label>
-                  <input type="text" class="form-control" name="engineNo" value="<?php echo $engineNo ?>" placeholder="" required>
-                </div><div class="form-group">
-                  <label>Chassis No</label>
-                  <input type="text" class="form-control" name="chassisNo" value="<?php echo $chassisNo ?>" placeholder="" required>
-                </div><div class="form-group">
-                  <label>CC</label>
-                  <input type="text" class="form-control" name="cc" placeholder="" value="<?php echo $cc ?>" required>
-                </div><div class="form-group">
-                  <label>Body Color </label>
-                  <input type="text" class="form-control" name="color" placeholder="" value="<?php echo $color ?>" required>
-                </div><div class="form-group">
-                  <label>Price</label>
-                  <input type="number" class="form-control" name="price" placeholder="" value="<?php echo $price ?>" required>
-                </div>
-				
+                                
+                                <input type="hidden" class="form-control" name="mID" value="<?php echo $mID ?>" placeholder="" required>
+                              </div>
 				<div class="form-group">
                   
                   <input type="submit" class="btn btn-flat btn-block btn-success" name="update" value="Update">

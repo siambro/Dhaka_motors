@@ -3,12 +3,13 @@
  protect_page_redirect();
 ?>
 <div class="content">
-	<div class="row">
+	<div class="row" style="margin-top: 50px">
 		<div class="col-md-4 col-md-offset-4">
 			<div class="login-panel panel panel-default">
-				<div class="panel-heading">
+				<!-- <div class="panel-heading">
 					<h3 class="panel-title">Sign In</h3>
-				</div>
+				</div> -->
+				<h2 align="center">Sign In</h2>
 				<div class="panel-body">  
 				  <form role="form" action="loginManager.php" method="POST">
 						<fieldset>

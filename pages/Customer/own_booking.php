@@ -3,7 +3,7 @@
 
 ?>
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="container">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -19,13 +19,13 @@
     <!-- Main content -->
     <section class="content">
       <div class="row">
-	  
-        <div class="col-xs-12">
+			<div class="col-xs-3"></div>
+        <div class="col-xs-6">
      
           <div class="box box-primary">
-            <div class="box-header with-border">
+            <!-- <div class="box-header with-border">
               <h3 class="box-title">Booking List</h3>
-            </div>
+            </div> -->
             <!-- /.box-header -->
             <div class="box-body">
 					
@@ -35,7 +35,7 @@
 								from pre_booking p, customer c 
 								where p.cID=c.cID
 								and status=1
-								and c.userName='".$_SESSION['userName']."'
+								and c.phone='".$_SESSION['userName']."'
 								";
 								
 
