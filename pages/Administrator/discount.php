@@ -19,6 +19,16 @@
     <!-- Main content -->
 	
 	<section class="content">
+
+
+				<?php if(isset($_GET['error']) == true){?>
+					<div class="alert alert-danger alert-dismissible">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+										<h4><i class="icon fa fa-ban"></i> Alert!</h4>
+										Choose appropriate date!
+					</div>
+        <?php }?>
+
       <div class="row">
         <div class="col-xs-8">
           
@@ -52,12 +62,12 @@
 					   if(conf)
 						  window.location=anchor.attr("href");
 					}
-					function confirmationSet(anchor)
-					{
-					   var conf = confirm('Are you sure want to Set this record?');
-					   if(conf)
-						  window.location=anchor.attr("href");
-					}
+					// function confirmationSet(anchor)
+					// {
+					//    var conf = confirm('Are you sure want to Set this record?');
+					//    if(conf)
+					// 	  window.location=anchor.attr("href");
+					// }
 				</script>	
 				<script>
 				 $( function() {
@@ -86,17 +96,20 @@
 								// echo "<td>".$row['status']."</td>";
 								// echo "<td><div class='form-group'><div class='input-group date'><input type='text' name='extend' class='form-control' value='".$row['d_to']."' id='datepicker2'><div class='input-group-addon'><input type='submit' class='btn btn-success btn-sm'></div></div></div></td>";
 
-								echo "<td><form class='form-horizontal' action='admin_discountManager.php' method='POST'>
+								?>
+								<td><form class='form-horizontal' action='admin_discountManager.php' method='POST'>
 								<div class='form-group margin-bottom-none'>
 									<div class='col-sm-6'>
-										<input type='text' class='form-control input-sm' value='".$row['d_to']."' name=exp id='datepicker2'>
+										<input type='date' class='form-control input-sm' value=<?php echo $row['d_to']?> name="exp" required >
 									</div>
 									<div class='col-sm-4'>
-									<input type='hidden' value='".$row['discount_id']."' name='discount_id'>
-										<button type='submit' class='btn btn-danger pull-right btn-block btn-sm' name='set' onclick='javascript:confirmationSet($(this));return false;'>Set</button>
+									<input type='hidden' value=<?php echo $row['discount_id']?> name='discount_id'>
+										<button type='submit' class='btn btn-danger pull-right btn-block btn-sm' name="set" onclick="return confirm('Are you sure want SET?')">Set</button>
 									</div>
 								</div>
-							</form></td>";
+							</form></td>
+							
+							<?php
 								echo "</tr>";
 							}
 						}else{
@@ -137,7 +150,7 @@
 							<label>Date From</label>
 							<div class="input-group date">
 							
-									<input type="text" class="form-control pull-right" name="dFrom" id="datepicker">
+									<input type="text" class="form-control pull-right" name="dFrom" id="datepicker" required>
 									<div class="input-group-addon">
 									<i class="fa fa-calendar"></i>
 								</div>
@@ -148,7 +161,7 @@
 				  <div class="form-group">
 						<label>Date To</label>
 						<div class="input-group date">
-							<input type="text" class="form-control " name="dTo" id="datepick">
+							<input type="text" class="form-control " name="dTo" id="datepick" required>
 							<div class="input-group-addon">
 								<i class="fa fa-calendar"></i>
 							</div>
