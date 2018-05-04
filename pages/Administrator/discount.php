@@ -69,11 +69,7 @@
 					// 	  window.location=anchor.attr("href");
 					// }
 				</script>	
-				<script>
-				 $( function() {
-					$( "#datepicker2" ).datepicker({ minDate: 1, maxDate: "+1M +10D",dateFormat:"yy-mm-dd"});
-				  } );
-				</script>
+				
 					<?php
 					 $con=mysqli_connect('localhost','root','','dhaka_motors');
 
@@ -97,10 +93,16 @@
 								// echo "<td><div class='form-group'><div class='input-group date'><input type='text' name='extend' class='form-control' value='".$row['d_to']."' id='datepicker2'><div class='input-group-addon'><input type='submit' class='btn btn-success btn-sm'></div></div></div></td>";
 
 								?>
+
+								<script>
+								$( function() {
+									$( "#datepicker2" ).datepicker({ minDate: "<?php echo $row['d_to']?>", maxDate: "+1M +10D",dateFormat:"yy-mm-dd"});
+									} );
+								</script>
 								<td><form class='form-horizontal' action='admin_discountManager.php' method='POST'>
 								<div class='form-group margin-bottom-none'>
 									<div class='col-sm-6'>
-										<input type='date' class='form-control input-sm' value=<?php echo $row['d_to']?> name="exp" required >
+										<input type='text' class='form-control input-sm' value=<?php echo $row['d_to']?> name="exp" id="datepicker2" required >
 									</div>
 									<div class='col-sm-4'>
 									<input type='hidden' value=<?php echo $row['discount_id']?> name='discount_id'>
@@ -134,7 +136,7 @@
             <!-- /.box-header -->
             <div class="box-body">
               <form role="form" action="admin_discountManager.php" method="POST">
-                <script>
+                <!-- <script>
 				 $( function() {
 					$( "#datepicker" ).datepicker({ minDate: 1, maxDate: "+1M +10D",dateFormat:"yy-mm-dd"});
 				  } );
@@ -144,7 +146,43 @@
 				 $( function() {
 					$( "#datepick" ).datepicker({ minDate: 1, maxDate: "+1M +10D",dateFormat:"yy-mm-dd"});
 				  } );
-				</script>
+				</script> -->
+
+<script>
+  $( function() {
+    var dateFormat = "mm/dd/yy",
+      from = $( "#datepicker" )
+        .datepicker({
+					minDate: 1,
+          defaultDate: "+1w",
+          changeMonth: true,
+          numberOfMonths: 1
+        })
+        .on( "change", function() {
+          to.datepicker( "option", "minDate", getDate( this ) );
+        }),
+      to = $( "#datepick" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        numberOfMonths: 1
+      })
+      .on( "change", function() {
+        from.datepicker( "option", "maxDate", getDate( this ) );
+      });
+ 
+    function getDate( element ) {
+      var date;
+      try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+      } catch( error ) {
+        date = null;
+      }
+ 
+      return date;
+    }
+  } );
+  </script>
+
                 <!-- select -->
        		 <div class="form-group">
 							<label>Date From</label>

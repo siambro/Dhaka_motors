@@ -37,6 +37,8 @@
 											}
 											else if(isset($_GET['error1']) == true){
 												echo 'Wrong Username or Password';
+											}else if(isset($_GET['error3']) == true){
+												echo 'Authentication failed';
 											}
 											
 											

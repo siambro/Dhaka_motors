@@ -25,9 +25,11 @@
 // echo $level;
 // exit;
 			if($level == "manager"){
+				$_SESSION['level'] = $level;
 				header('location: Manager/index.php');
 			}
 			else if($level == "admin"){
+				$_SESSION['level'] = $level;
 				header('location: Administrator/index.php');
 			}else{
 				header('location: login.php');
