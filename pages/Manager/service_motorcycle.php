@@ -152,7 +152,7 @@ date_default_timezone_set('Asia/Dhaka');
             <!-- /.box-header -->
             <!-- <div class="box-body"> -->
             <form role="form" action="serviceManager.php" method="POST">
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="example1" class="table table-striped">
                 <thead>
                 <tr>
                   <th>Select</th>

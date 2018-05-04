@@ -5,7 +5,9 @@ $connection=mysqli_connect("localhost","root","","dhaka_motors");
 if(logged_in()==TRUE){
 	if(isset($_POST['add'])){
 		$dFrom=$_POST['dFrom'];
+		$dFrom = date('Y-m-d', strtotime($dFrom));
 		$dTo=$_POST['dTo'];
+		$dTo = date('Y-m-d', strtotime($dTo));
 		$percentage=$_POST['percentage'];
 		$status='Active';
 		
@@ -26,7 +28,7 @@ if(logged_in()==TRUE){
 
 			$query1= "select d_to from discount where discount_id=$id";
 			$result1=mysqli_query($connection,$query1);
-			if($result1){
+			if($result1>0){
 				$row=mysqli_fetch_array($result1,MYSQLI_ASSOC);	
 				$d_to=$row['d_to'];
 				
@@ -48,6 +50,20 @@ if(logged_in()==TRUE){
 				}else{
 					header("location: discount.php?error");
 				}
+				
+			}else{
+
+				$query="insert into discount values('', '$dFrom', '$dTo', '$percentage','$status','$staffID')";
+					
+					//$new = 'LAST_INSERT_ID()';
+								
+					$result=mysqli_query($connection,$query);
+					//$result1=mysqli_query($connection,$query1);
+					if( $result){
+						header("location: discount.php?addded");
+					}else{
+						echo mysqli_error($connection);
+					}
 			}
 		}
 	}

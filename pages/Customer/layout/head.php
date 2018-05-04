@@ -33,6 +33,7 @@
 	$connection = mysqli_connect("localhost", "root", "", "dhaka_motors");
 	include '../functions.php';
   protect_page();
+  protect_page_customer();
   
 
   

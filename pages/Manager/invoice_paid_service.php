@@ -227,7 +227,23 @@ include 'layout/head.php';
           echo "</tr>";
           echo "</table>";
         }else{
-          echo 'No Parts Included';
+          
+          echo "<table class=table table-dark table-hover>";
+          
+          echo "<thead>";
+           
+          echo "</thead>";
+            echo"<tbody>";
+              echo "<td align=right><b>Service Charge -</b></td>";
+              echo "<td align=left><b>  $fee</b></td>";
+              echo "<td></td>";
+              echo "<td></td>";
+              echo "<td></td>";
+              echo "<td></td>";
+              echo "<td></td>";
+              echo "<td></td>";
+            echo "</tbody>";
+          echo "</table>";
         }
         
           

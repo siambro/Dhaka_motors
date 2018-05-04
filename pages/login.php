@@ -24,12 +24,12 @@
 									<input name="remember" type="checkbox" value="Remember Me">Remember Me
 								</label>
 							</div>
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<a href="signup.php">Not signed in? Signup here ... </a>
-							</div>
+							</div> -->
 							
 							<div class="form-group">
-								<div id="errorMessege">
+								<div id="errorMessege" style="color:red">
 										<?php  
 
 											if(isset($_GET['error2']) == true){

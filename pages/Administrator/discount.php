@@ -210,7 +210,7 @@
 				<!-- text input -->
                 <div class="form-group">
                   <label>Percentage(%)</label>
-                  <input type="number" class="form-control" name="percentage" min=0 max=40 placeholder="" required>
+                  <input type="number" class="form-control" name="percentage" min=0 max=40 placeholder="Less than 40%" required>
                 </div>
 				
 				<div class="form-group">

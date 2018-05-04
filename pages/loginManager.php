@@ -38,6 +38,7 @@
 		}else if(mysqli_fetch_array($result1)){
 			$_SESSION['login'] = true;
 			$_SESSION['userName'] = $userName;
+			$_SESSION['phone'] = $phone;
 			$_SESSION['password'] = $password;
 			header('location: Customer/index.php');
 

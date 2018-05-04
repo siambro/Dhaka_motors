@@ -3,6 +3,13 @@ session_start();
 
 $connection=mysqli_connect("localhost", "root", "", "dhaka_motors");
 
+
+$query="SELECT * FROM service_type";
+$result=mysqli_query($connection,$query);
+	if($result){
+	$row=mysqli_fetch_array($result,MYSQLI_ASSOC);
+	$type=$row['type_id'];
+}
 if(isset($_POST['num'])){			
 		
 		$quan=$_POST['quantity'];
@@ -17,7 +24,7 @@ if(isset($_POST['num'])){
 			$row=mysqli_fetch_array($result0,MYSQLI_ASSOC);	
 			$staffID=$row['staff_ID'];
 
-			$query2="insert into service values('',NOW(),NOW(),'$mID','$staffID','')";
+			$query2="insert into service values('',NOW(),NOW(),'$type', $mID','$staffID','')";
 			$result2=mysqli_query($connection,$query2);
 
 			$query5="SELECT MAX(service_id) FROM service";
@@ -84,7 +91,7 @@ if(isset($_POST['num'])){
 			$row=mysqli_fetch_array($result0,MYSQLI_ASSOC);	
 			$staffID=$row['staff_ID'];
 
-			$query2="insert into service values('',NOW(),NOW(),'$mID','$staffID','')";
+			$query2="insert into service values('',NOW(),NOW(),'$type','$mID','$staffID','')";
 			$result2=mysqli_query($connection,$query2);
 			if($result2){
 				header("Location:invoice_service.php?mID=$mID");
