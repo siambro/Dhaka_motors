@@ -29,6 +29,14 @@
 					</div>
         <?php }?>
 
+				 <?php if(isset($_GET['updated']) == true){?>
+        <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h4><i class="icon fa fa-check"></i> Alert!</h4>
+                  Successfully Updated Date.
+        </div>
+        <?php }?>
+
       <div class="row">
         <div class="col-xs-8">
           
@@ -213,7 +221,7 @@
                   <input type="number" class="form-control" name="percentage" min=0 max=40 placeholder="Less than 40%" required>
                 </div>
 				
-				<div class="form-group">
+								<div class="form-group">
                   <input type="submit" class="btn btn-flat btn-block btn-success" onclick="return confirm('Are you sure want to add?')" name="add" value="Post Discount" >
                 </div>
    

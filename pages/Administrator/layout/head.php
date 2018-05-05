@@ -100,11 +100,11 @@
                     echo "No User";
                   }
                 ?>
-                  <small>Member since Nov. 2012</small>
+                  <small>Administrator</small>
                 </p>
               </li>
               <!-- Menu Body -->
-              <li class="user-body">
+              <!-- <li class="user-body">
                 <div class="row">
                   <div class="col-xs-4 text-center">
                     <a href="#">Followers</a>
@@ -116,8 +116,8 @@
                     <a href="#">Friends</a>
                   </div>
                 </div>
-                <!-- /.row -->
-              </li>
+               
+              </li> -->
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
@@ -160,21 +160,24 @@
 		<li><a href="discount.php"><i class="fa fa-book"></i> <span>Discount Ratio</span></a></li>
         
 		<li class="treeview">
-          <a href="#">
-            <i class="fa fa-files-o"></i>
-            <span>Data</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="branches.php"><i class="fa fa-circle-o"></i> Branches</a></li>
-            <li><a href="name.php"><i class="fa fa-circle-o"></i> Motorcycle Name</a></li>
-            <li><a href="model.php"><i class="fa fa-circle-o"></i> Motorcycle Model</a></li>
-            <li><a href="type.php"><i class="fa fa-circle-o"></i> Motorcycle Type</a></li>
-           </ul>
-        </li>
-      </ul>
-    </section>
-    <!-- /.sidebar -->
-  </aside>
+      <a href="#">
+        <i class="fa fa-files-o"></i>
+        <span>Data</span>
+        <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li><a href="branches.php"><i class="fa fa-circle-o"></i> Branches</a></li>
+        <li><a href="name.php"><i class="fa fa-circle-o"></i> Motorcycle Name</a></li>
+        <li><a href="model.php"><i class="fa fa-circle-o"></i> Motorcycle Model</a></li>
+        <li><a href="type.php"><i class="fa fa-circle-o"></i> Motorcycle Type</a></li>
+        </ul>
+    </li>
+
+    <li><a href="customer.php"><i class="fa fa-book"></i> <span>Customer</span></a></li>
+    
+  </ul>
+</section>
+<!-- /.sidebar -->
+</aside>
