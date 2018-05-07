@@ -7,8 +7,9 @@ if(logged_in()==TRUE){
 		$mType=$_POST['mType'];
 		$mName=$_POST['mName'];
 		$model=$_POST['model'];
-		$engineNo=$_POST['engineNo'];
-		$chassisNo=$_POST['chassisNo'];
+		// $engineNo=$_POST['engineNo'];
+		$engineNo=strtoupper($_POST['engineNo']);
+		$chassisNo=strtoupper($_POST['chassisNo']);
 		$cc=$_POST['cc'];
 		$color=$_POST['color'];
 		$price=$_POST['price'];

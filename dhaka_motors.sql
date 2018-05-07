@@ -4,7 +4,7 @@ Source Host: localhost
 Source Database: dhaka_motors
 Target Host: localhost
 Target Database: dhaka_motors
-Date: 07-May-18 1:19:13 AM
+Date: 07-May-18 10:20:45 PM
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -21,7 +21,7 @@ CREATE TABLE `customer` (
   `userName` varchar(30) DEFAULT NULL,
   `password` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`cID`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for dealers
@@ -56,7 +56,7 @@ CREATE TABLE `distribution` (
   `date` date NOT NULL,
   `dealer_id` int(11) NOT NULL,
   PRIMARY KEY (`distribution_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for motorcycle_info
@@ -81,7 +81,7 @@ CREATE TABLE `motorcycle_info` (
   KEY `stock` (`sID`),
   KEY `sale` (`saleID`),
   KEY `customer` (`cID`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for motorcycle_model
@@ -126,7 +126,7 @@ CREATE TABLE `parts_info` (
   `stock_id` int(11) NOT NULL,
   `staff_id` int(11) NOT NULL,
   PRIMARY KEY (`parts_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for parts_sale
@@ -172,7 +172,7 @@ CREATE TABLE `sale_info` (
   `dID` int(11) NOT NULL,
   PRIMARY KEY (`saleID`),
   KEY `stafftosale` (`staff_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=188 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=191 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for service
@@ -228,7 +228,7 @@ CREATE TABLE `stock_info` (
   `staff_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`sID`),
   KEY `staffID` (`staff_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records 
@@ -241,12 +241,14 @@ INSERT INTO `dealers` VALUES ('3', 'Comilla');
 INSERT INTO `dealers` VALUES ('4', 'Rajshahi');
 INSERT INTO `dealers` VALUES ('5', 'Khulna');
 INSERT INTO `discount` VALUES ('7', '2018-05-03', '2018-05-10', '4', 'Active', '2');
-INSERT INTO `distribution` VALUES ('1', '2018-04-24', '2');
-INSERT INTO `motorcycle_info` VALUES ('36', 'Sports', 'FZS V1', '2015', 'AFDFFFG', 'NINBIFNF', '150', 'GREEN', '200000', '47', '184', '33', '2020-05-04', '');
+INSERT INTO `distribution` VALUES ('2', '2018-05-07', '2');
+INSERT INTO `distribution` VALUES ('3', '2018-05-07', '3');
+INSERT INTO `distribution` VALUES ('4', '2018-05-07', '5');
+INSERT INTO `motorcycle_info` VALUES ('36', 'Sports', 'FZS V1', '2015', 'AFDFFFG', 'NINBIFNF', '150', 'GREEN', '200000', '47', '0', '33', '2020-05-04', '');
 INSERT INTO `motorcycle_info` VALUES ('37', 'Classic', 'R15 V3', '2018', 'AFDFFFG', 'ODSNBFPODSNB F', '150', 'GREEN', '', '0', '0', '34', '0000-00-00', 'Dhaka metro 17-6888');
-INSERT INTO `motorcycle_info` VALUES ('38', 'Cruising', 'FZS V2', '2017', 'AER7643TH4', '123BURTHBV90', '165', 'Ninja Green', '255000', '48', '0', '0', '0000-00-00', '');
-INSERT INTO `motorcycle_info` VALUES ('39', 'Sports', 'FZS SE', '2018', 'AER7643TH4', '123BURTHBV90', '150', 'Red', '265000', '49', '0', '0', '0000-00-00', '');
-INSERT INTO `motorcycle_info` VALUES ('40', 'Sports', 'R15 V1', '2018', 'A4R7643TH4', '123BU453HBV90', '165', 'White', '555000', '50', '0', '0', '0000-00-00', '');
+INSERT INTO `motorcycle_info` VALUES ('38', 'Cruising', 'FZS V2', '2017', 'AER7643TH4', '123BURTHBV90', '165', 'Ninja Green', '255000', '48', '0', '35', '2020-05-07', '');
+INSERT INTO `motorcycle_info` VALUES ('39', 'Sports', 'FZS SE', '2018', 'AER7643TH4', '123BURTHBV90', '150', 'Red', '265000', '49', '0', '36', '2020-05-07', '');
+INSERT INTO `motorcycle_info` VALUES ('40', 'Sports', 'R15 V1', '2018', 'A4R7643TH4', '123BU453HBV90', '165', 'White', '555000', '50', '0', '37', '2020-05-07', '');
 INSERT INTO `motorcycle_info` VALUES ('41', 'Sports', 'R15 V2', '2018', 'AER7643TH4', '123BURTHBV90', '165', 'Black ', '500000', '51', '0', '0', '0000-00-00', '');
 INSERT INTO `motorcycle_info` VALUES ('42', 'Sports', 'R15 V3', '2018', 'AER7643TH4', '123BU453HBV90', '150', 'Red', '490000', '52', '0', '0', '0000-00-00', '');
 INSERT INTO `motorcycle_info` VALUES ('43', 'Classic', 'Fazar V1', '2017', 'AFDFFFG4345', '234DGRFFRFVF', '150', 'Green', '275000', '53', '0', '0', '0000-00-00', '');
@@ -256,6 +258,8 @@ INSERT INTO `motorcycle_info` VALUES ('46', 'Sports', 'FZS V1', '2018', 'AER7643
 INSERT INTO `motorcycle_info` VALUES ('47', 'Cruising', 'Fazer V2', '2018', 'AER7643TH4', '123BU453HBV90', '165', 'Ninja Green', '235000', '57', '0', '0', '0000-00-00', '');
 INSERT INTO `motorcycle_info` VALUES ('48', 'Sports', 'R15 V2', '2018', 'AER7643TH4', '234DGRFFRFVF', '165', 'White', '520000', '58', '0', '0', '0000-00-00', '');
 INSERT INTO `motorcycle_info` VALUES ('49', 'Sports', 'R15 V2', '2018', 'AER7643TH6', '234DGRFFRFVF', '165', 'White', '520000', '59', '0', '0', '0000-00-00', '');
+INSERT INTO `motorcycle_info` VALUES ('59', 'Sports', 'FZS V1', '2015', 'KAJSBFJO65', '123BURTHBV', '150', 'White', '550000', '74', '0', '0', '0000-00-00', '');
+INSERT INTO `motorcycle_info` VALUES ('60', 'Classic', 'R15 V3', '2018', 'ABCD123456', 'ABC09876FR', '150', 'Black ', '540000', '75', '0', '0', '0000-00-00', '');
 INSERT INTO `motorcycle_model` VALUES ('1', '2015');
 INSERT INTO `motorcycle_model` VALUES ('2', '2016');
 INSERT INTO `motorcycle_model` VALUES ('3', '2017');
@@ -276,7 +280,6 @@ INSERT INTO `parts_info` VALUES ('8', 'Engine', 'Timming Chain', '500', '9', '43
 INSERT INTO `parts_info` VALUES ('9', 'Engine', 'Roker', '1400', '5', '44', '1');
 INSERT INTO `parts_sale` VALUES ('178', '8', '186', '1', '34', '46');
 INSERT INTO `parts_sale` VALUES ('179', '9', '186', '1', '34', '46');
-INSERT INTO `sale_info` VALUES ('184', '2018-05-05', '00:34:00', '192000', '1', '0', '7');
 INSERT INTO `sale_info` VALUES ('185', '2018-05-05', '00:47:27', '600', '1', '0', '0');
 INSERT INTO `sale_info` VALUES ('186', '2018-05-05', '00:47:48', '2500', '1', '0', '0');
 INSERT INTO `sale_info` VALUES ('187', '2018-05-05', '00:51:52', '1000', '1', '0', '0');
@@ -290,12 +293,12 @@ INSERT INTO `service_type` VALUES ('2', 'Full', '1000');
 INSERT INTO `service_type` VALUES ('3', 'Regular', '600');
 INSERT INTO `staff_info` VALUES ('1', 'Muntasir ', '01730176622', 'muntasir35@diit.info', 'siam', '1234', 'manager', '1');
 INSERT INTO `staff_info` VALUES ('2', 'Muntasir', '01636093454', 'careless_siam@yahoo.com', 'mun', '1234', 'admin', '1');
-INSERT INTO `stock_info` VALUES ('47', '2018-05-05', '00:26:25', '1', '2');
-INSERT INTO `stock_info` VALUES ('48', '2018-05-06', '21:41:01', '1', '2');
-INSERT INTO `stock_info` VALUES ('49', '2018-05-06', '21:41:48', '1', '2');
-INSERT INTO `stock_info` VALUES ('50', '2018-05-06', '21:42:33', '1', '2');
-INSERT INTO `stock_info` VALUES ('51', '2018-05-06', '21:43:30', '1', '2');
-INSERT INTO `stock_info` VALUES ('52', '2018-05-06', '21:44:00', '1', '2');
+INSERT INTO `stock_info` VALUES ('47', '2018-05-05', '00:26:25', '2', '2');
+INSERT INTO `stock_info` VALUES ('48', '2018-05-06', '21:41:01', '2', '2');
+INSERT INTO `stock_info` VALUES ('49', '2018-05-06', '21:41:48', '2', '2');
+INSERT INTO `stock_info` VALUES ('50', '2018-05-06', '21:42:33', '3', '2');
+INSERT INTO `stock_info` VALUES ('51', '2018-05-06', '21:43:30', '5', '2');
+INSERT INTO `stock_info` VALUES ('52', '2018-05-06', '21:44:00', '5', '2');
 INSERT INTO `stock_info` VALUES ('53', '2018-05-06', '21:44:42', '1', '2');
 INSERT INTO `stock_info` VALUES ('54', '2018-05-06', '21:45:33', '1', '2');
 INSERT INTO `stock_info` VALUES ('55', '2018-05-06', '21:47:18', '1', '2');
@@ -303,3 +306,14 @@ INSERT INTO `stock_info` VALUES ('56', '2018-05-06', '21:59:19', '1', '2');
 INSERT INTO `stock_info` VALUES ('57', '2018-05-06', '21:59:44', '1', '2');
 INSERT INTO `stock_info` VALUES ('58', '2018-05-06', '22:01:52', '1', '2');
 INSERT INTO `stock_info` VALUES ('59', '2018-05-06', '22:01:55', '1', '2');
+INSERT INTO `stock_info` VALUES ('60', '2018-05-07', '18:24:37', '1', '2');
+INSERT INTO `stock_info` VALUES ('61', '2018-05-07', '18:25:09', '1', '2');
+INSERT INTO `stock_info` VALUES ('62', '2018-05-07', '18:25:52', '1', '2');
+INSERT INTO `stock_info` VALUES ('63', '2018-05-07', '18:26:14', '1', '2');
+INSERT INTO `stock_info` VALUES ('64', '2018-05-07', '18:28:02', '1', '2');
+INSERT INTO `stock_info` VALUES ('65', '2018-05-07', '18:33:35', '1', '2');
+INSERT INTO `stock_info` VALUES ('66', '2018-05-07', '18:59:33', '1', '2');
+INSERT INTO `stock_info` VALUES ('67', '2018-05-07', '19:12:24', '1', '2');
+INSERT INTO `stock_info` VALUES ('73', '2018-05-07', '19:38:27', '1', '2');
+INSERT INTO `stock_info` VALUES ('74', '2018-05-07', '19:46:02', '1', '2');
+INSERT INTO `stock_info` VALUES ('75', '2018-05-07', '19:48:59', '1', '2');

@@ -2,6 +2,58 @@
  include 'layout/head.php';
  
 ?>
+
+<script type="text/javascript">
+	function validate(form)
+	{
+    fail = validatePname(form.pName.value)
+    fail += validateprice(form.price.value)
+		fail += validatequantity(form.quantity.value)
+		
+		if (fail == "") {
+			return true;
+			}
+		else { 
+			alert(fail); 
+		}	
+			return false ;
+	}
+	
+  function validatePname(field){
+		if (field == "") {
+			return "Enter Name\n";
+		}else if (field.length < 3) {
+			return "Name should be more than 5 characters\n";
+		}
+		return "";
+	}
+
+	function validateprice(field) {
+		if(field==""){
+			return "Enter Price\n";
+		}
+		else if (isNaN(field)) {
+			return "Enter Numeric value\n";
+			}
+		else if(field.length < 3 || field.length > 4 )	{
+			return "Price is not accurate\n";
+		}
+		return "";
+	}
+  function validatequantity(field){
+		if (field == "") {
+			return "Enter Quantity\n";
+		}
+    else if (isNaN(field)) {
+			return "Enter Numeric value\n";
+		}else if (field.length < 1) {
+			return "Quantity should be accurate\n";
+		}
+		return "";
+	}
+
+</script>
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -98,12 +150,12 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <form role="form" action="partsStockManager.php" method="POST">
+              <form role="form" action="partsStockManager.php" method="POST" onsubmit="return validate(this)">
                 
                 <!-- select -->
                 <div class="form-group">
                   <label>Motorcycle Type</label>
-                  <select class="form-control" name="pType">
+                  <select class="form-control" name="pType" required>
                     <option value="">Select Type</option>;
 					<option value="Engine">EngineParts</option>;
 					<option value="Body">Body Parts</option>;

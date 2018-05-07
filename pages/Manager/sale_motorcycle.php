@@ -5,6 +5,60 @@ if(isset($_GET['error'])){
 	echo "<script>alert('No Motorcycle Selected For Sale')</script>";
 }
 ?>
+
+<script type="text/javascript">
+	function validate(form)
+	{
+    fail = validatephone(form.phone.value)
+    fail += validatename(form.name.value)
+		fail += validateemail(form.email.value)
+		fail += validatenid(form.nid.value)
+		
+		if (fail == "") {
+			return true;
+			}
+		else { 
+			alert(fail); 
+		}	
+			return false ;
+	}
+	
+  function validatephone(field){
+		if (field == "") {
+			return "Enter Phone\n";
+		}else if (isNaN(field)) {
+			return "Enter numeric value in PHONE\n";
+		}else if (field.length < 11 || field.length > 11) {
+			return "Phone number must be 11 character\n";
+		}
+		return "";
+	}
+
+	function validatename(field) {
+		
+		
+		else if(field.length < 3 || field.length > 10 )	{
+			return "Price is not accurate\n";
+		}
+		return "";
+	}
+  function validateemail(field) {
+		
+		else if (!((field.indexOf(".") > 0) &&(field.indexOf("@") > 0)) ||/[^a-zA-Z0-9.@_-]/.test(field)){
+			return "The Email address is invalid\n";
+			
+		}
+		return "";
+	}
+	function validatenid(field) {
+		
+		
+		else if(field.length < 14 || field.length > 14 )	{
+			return "NID number is not right\n";
+		}
+		return "";
+	}
+</script>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -22,7 +76,7 @@ if(isset($_GET['error'])){
     <!-- Main content -->
     <section class="content">
       <div class="row">
-	  <form role="form" action="sales_motorcycleManager.php" method="POST">
+	  <form role="form" action="sales_motorcycleManager.php" method="POST" onsubmit="return validate(this)">
         <div class="col-xs-8">
           
 		

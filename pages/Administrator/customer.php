@@ -30,8 +30,8 @@
     <?php }?>
 
       <div class="row">
-      <div class="col-xs-2"></div>
-        <div class="col-xs-8">
+      <div class="col-xs-3"></div>
+        <div class="col-xs-6">
           
 
           <div class="box">
@@ -44,7 +44,7 @@
                 <thead>
                 <tr>
                   <tr>
-										<th>Edit</th>
+										<!-- <th>Edit</th> -->
 										<!-- <th>Delete</th> -->
 										
 										
@@ -76,7 +76,7 @@
                     if(mysqli_num_rows($result)>0){
                       while($row=mysqli_fetch_array($result, MYSQLI_ASSOC)){
                         echo "<tr>";
-                        echo "<td><a href='update_customer.php?cID=".$row['cID']."'><span class='fa fa-edit'></span></a></td>";
+                        // echo "<td><a href='update_customer.php?cID=".$row['cID']."'><span class='fa fa-edit'></span></a></td>";
                         //echo "<td><a href=dDelete.php?discount_id=".$row['discount_id']."'><span class='fa fa-minus-circle'></span></a></td>";
                         
                         // echo "<td><a onclick='javascript:confirmationDelete($(this));return false;' href='c_delete.php?cID=".$row['cID']."'>x</a></td>";
@@ -86,7 +86,8 @@
                         echo "<td><a href='details_customer.php?cID=".$row['cID']."'></a></td>";
                         // echo "<td><a href='c_details.php?cID=".$row['cID']."'><input type='submit' data-toggle='modal' data-target='#modal-warning' class='btn btn-flat btn-xs btn-warning' name='details' value='DETAILS'></a></td>";
                         // echo "<td><input type='submit' data-toggle='modal' data-target='#modal-warning' class='btn btn-flat btn-xs btn-warning' name='".$row['cID']."' value='DETAILS'></td>";
-                        echo "<td><a ><input type='submit' data-toggle='modal' data-target='#modal-warning' class='btn btn-flat btn-xs btn-warning' name='details' value='DETAILS'></a></td>";
+                        // echo "<td><a ><input type='submit' data-toggle='modal' data-target='#modal-warning' class='btn btn-flat btn-xs btn-warning' name='details' value='DETAILS'></a></td>";
+                        echo "<td><a href='update_customer.php?cID=".$row['cID']."'><span class='fa fa-edit'></span></a></td>";
                         
                         
                         echo "</tr>";

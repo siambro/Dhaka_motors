@@ -2,6 +2,77 @@
  include 'layout/head.php';
  
 ?>
+<script type="text/javascript">
+	function validate(form)
+	{
+		fail  = validateengineNo(form.engineNo.value)
+		fail += validatechassisNo(form.chassisNo.value)
+		fail += validatecc(form.cc.value)
+		fail += validatecolor(form.color.value)
+		fail += validateprice(form.price.value)
+
+    // fail = validatePname(form.pName.value)
+	
+		
+		if (fail == "") {
+			return true;
+			}
+		else { 
+			alert(fail); 
+		}	
+			return false ;
+	}
+	
+	function validateengineNo(field) {
+		if (field == "") {
+			return "Enter Engine No\n";
+		}else if (field.length < 10 || field.length > 10) {
+			return "Engine No length minimum 10 character long\n";
+		}
+		return "";
+	}
+	function validatechassisNo(field) {
+		if (field == "") {
+			return "Enter chassis No\n";
+		}
+		else if (field.length < 10 || field.length > 10){
+			return "Chassis No length minimum 10 character long\n";
+			
+		}
+		return "";
+	}
+	function validatecc(field){
+		if (field == ""){ 
+			return "Enter CC\n";
+		}else if (field.length < 3 || field.length > 3) {
+			return "CC must be at least 3 characters\n";
+		}
+		return "";
+	}
+	function validatecolor(field){
+		if (field == "") {
+			return "Enter Color\n";
+		}else if (field.length < 3) {
+			return "Color must be more than 3 characters\n";
+		}
+		return "";
+	}
+	
+	function validateprice(field) {
+		if(field==""){
+			return "Enter Price\n";
+		}
+		else if (isNaN(field)) {
+			return "Enter Numeric value\n";
+			}
+		else if(field.length < 6 || field.length > 6 )	{
+			return "Price is not accurate\n";
+		}
+		return "";
+	}
+
+</script>
+
 <style>
     .example-modal .modal {
       position: relative;
@@ -152,7 +223,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <form role="form" action="vehicleStockManager.php" method="POST">
+              <form role="form" action="vehicleStockManager.php" method="POST" onsubmit="return validate(this)">
                 
                 <!-- select -->
                 <div class="form-group">
@@ -209,19 +280,19 @@
 				<!-- text input -->
                 <div class="form-group">
                   <label>Engine No</label>
-                  <input type="text" class="form-control" name="engineNo" placeholder="" required>
+                  <input type="text" class="form-control" name="engineNo" required placeholder="" >
                 </div><div class="form-group">
                   <label>Chassis No</label>
-                  <input type="text" class="form-control" name="chassisNo" placeholder="" required>
+                  <input type="text" class="form-control" name="chassisNo" required placeholder="ABC123">
                 </div><div class="form-group">
                   <label>CC</label>
-                  <input type="text" class="form-control" name="cc" placeholder="" required>
+                  <input type="text" class="form-control" name="cc" required  placeholder="">
                 </div><div class="form-group">
                   <label>Body Color </label>
-                  <input type="text" class="form-control" name="color" placeholder="" required>
+                  <input type="text" class="form-control" name="color" required  placeholder="">
                 </div><div class="form-group">
                   <label>Price</label>
-                  <input type="number" class="form-control" name="price" placeholder="" required>
+                  <input type="number" class="form-control" name="price" required placeholder="">
                 </div>
 				
 				<div class="form-group">

@@ -65,7 +65,9 @@ date_default_timezone_set('Asia/Dhaka');
                     where m.sID=s.sID
                     and s.dealer_id=de.ID
                     and de.ID=d.dealer_id
-                    and d.distribution_id='".$id."'";
+                    and d.distribution_id='".$id."'
+                    group by m.mID
+                    ";
             
                 //$query="select * from motorcycle_info where branch='Dhaka' and mID='$val'";
                 $result=mysqli_query($connection,$query);
@@ -105,6 +107,7 @@ date_default_timezone_set('Asia/Dhaka');
         <!-- /.col -->
       </div>
       <!-- info row -->
+      <div class = "row" align="center" style="background-color:#33B8FF; color:#33B8FF">  </div>
       <div class="row invoice-info">
         <div class="col-sm-4 invoice-col">
           From

@@ -61,9 +61,9 @@
                   <input type="text" class="form-control" name="nid" placeholder="" value="<?php echo $nid ?>" required>
                 
                 <div class="form-group">
-                                
-                                <input type="hidden" class="form-control" name="cID" value="<?php echo $cID ?>" placeholder="" required>
-                              </div>
+                  
+                  <input type="hidden" class="form-control" name="cID" value="<?php echo $cID ?>" placeholder="" required>
+                </div>
 				<div class="form-group">
                   
                   <input type="submit" class="btn btn-flat btn-block btn-success" name="update" value="Update">
