@@ -2,6 +2,67 @@
  include 'layout/head.php';
 
 ?>
+
+<script type="text/javascript">
+	function validate(form)
+	{
+    fail = validatephone(form.phone.value)
+    fail += validatemodel(form.model.value)
+	 fail += validateprice(form.fee.value)
+		// fail += validatenid(form.nid.value)
+		
+		if (fail == "") {
+			return true;
+			}
+		else { 
+			alert(fail); 
+		}	
+			return false ;
+	}
+	
+  function validatephone(field){
+		if (field == "") {
+			return "Enter Phone\n";
+		}else if (isNaN(field)) {
+			return "Enter numeric value in PHONE\n";
+		}else if (field.length < 11 || field.length > 11) {
+			return "Phone number must be 11 character\n";
+		}else if (((field.indexOf(".") > 0) && (field.indexOf("@") > 0)) || /[^0-9]/.test(field)){
+			return "The Phone No is invalid\n";
+			
+		}
+		return "";
+	}
+	function validatemodel(field){
+		if (field == "") {
+			return "Enter Model\n";
+		}else if (isNaN(field)) {
+			return "Enter numeric value in Model\n";
+		}else if (field.length < 4 || field.length > 4) {
+			return "Phone number must be 4 character\n";
+		}else if (((field.indexOf(".") > 0) && (field.indexOf("@") > 0)) || /[^a-zA-Z0-9@_-]/.test(field)){
+			return "The Phone No is invalid\n";
+			
+		}
+		return "";
+	}
+	function validateprice(field) {
+		if(field==""){
+			return "Enter payment\n";
+		}
+		else if (isNaN(field)) {
+			return "Enter Numeric value\n";
+			}
+		else if(field.length < 6 || field.length > 6 )	{
+			return "Payment is not accurate\n";
+		}else if (((field.indexOf(".") > 0) && (field.indexOf("@") > 0)) ||/[^0-9]/.test(field)){
+			return "The Payment is invalid\n";
+			
+		}
+		return "";
+	}
+
+</script>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -19,7 +80,7 @@
     <!-- Main content -->
     <section class="content">
       <div class="row">
-	  <form role="form" action="pre_bookManager.php" method="POST">
+	  <form role="form" action="pre_bookManager.php" method="POST" onsubmit="return validate(this)">
         <div class="col-xs-6">
      
           <div class="box box-primary">
@@ -45,7 +106,7 @@
                 </div>
 				<div class="form-group">
                   <label>NID </label>
-                  <input class="form-control" placeholder="National ID" id="nid" name="nid" type="text"  autofocus >
+                  <input class="form-control" placeholder="National ID" id="nid" name="nid" type="number"  autofocus >
                 </div>
 			</div>
             </div>

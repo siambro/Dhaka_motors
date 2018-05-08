@@ -19,8 +19,8 @@
     <!-- Main content -->
     <section class="content">
       <div class="row">
-	  
-        <div class="col-xs-12">
+      <div class="col-xs-2"></div>
+        <div class="col-xs-8">
      
           <div class="box box-primary">
             <div class="box-header with-border">
@@ -33,11 +33,11 @@
 									
 									//Booking 
 										$query="select *
-                    from sale_info s, parts_sale ps, parts_info p, customer c 
+                    from sale_info s, parts_sale ps, parts_info p 
                     
                     where s.saleID=ps.sale_id
                     and ps.parts_id= p.parts_id
-                    and ps.customer_id= c.cID
+                    
 										and ps.sale_id > 0
 										group by s.saleID";
 											
@@ -51,7 +51,7 @@
 										echo "<tr>";
 										
 										echo "<th>Sale ID</th>";
-										echo "<th>Customer Name</th>";
+										// echo "<th>Customer Name</th>";
 									
 										echo "<th>Purchase Date</th>";
 										echo "<th>Details</th>";
@@ -63,7 +63,7 @@
 										
 											echo "<tr>";
 											echo "<td>".$row['saleID']."</td>";
-											echo "<td>".$row['name']."</td>";
+											// echo "<td>".$row['name']."</td>";
 											echo "<td>".$row['sale_date']."</td>";
 										
 											echo "<td><a href='invoice_parts_details.php?saleID=".$row['saleID']."'><span class='fa fa-ellipsis-h'></span></a></td>";

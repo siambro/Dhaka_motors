@@ -96,7 +96,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <form role="form" action="b_manager.php" method="POST">
+              <form role="form" action="add_name.php" method="POST">
                 <script>
 										$( function() {
 											$( "#datepicker" ).datepicker({ minDate: 1, maxDate: "+1M +10D",dateFormat:"yy-mm-dd"});

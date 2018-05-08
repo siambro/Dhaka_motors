@@ -1,10 +1,43 @@
 <?php 
- include 'layout/head.php';
+include 'layout/head.php';
  
 if(isset($_GET['error'])){
 	echo "<script>alert('No Motorcycle Selected For Sale')</script>";
 }
 ?>
+
+<script type="text/javascript">
+	function validate(form)
+	{
+    fail = validatephone(form.phone.value)
+    // fail += validatename(form.name.value)
+		// fail += validateemail(form.email.value)
+		// fail += validatenid(form.nid.value)
+		
+		if (fail == "") {
+			return true;
+			}
+		else { 
+			alert(fail); 
+		}	
+			return false ;
+	}
+	
+  function validatephone(field){
+		if (field == "") {
+			return "Enter Phone\n";
+		}else if (isNaN(field)) {
+			return "Enter numeric value in PHONE\n";
+		}else if (field.length < 11 || field.length > 11) {
+			return "Phone number must be 11 character\n";
+		}else if (((field.indexOf(".") > 0) && (field.indexOf("@") > 0)) || /[^0-9]/.test(field)){
+			return "The Phone No is invalid\n";
+			
+		}
+		return "";
+	}
+
+</script>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -22,7 +55,7 @@ if(isset($_GET['error'])){
     <!-- Main content -->
     <section class="content">
       <div class="row">
-	  <form role="form" action="sales_motorcycleManager.php" method="POST">
+	  <form role="form" action="sales_motorcycleManager.php" method="POST" onsubmit="return validate(this)">
         <div class="col-xs-8">
           
 		
@@ -60,8 +93,6 @@ if(isset($_GET['error'])){
 							while($row=mysqli_fetch_array($result, MYSQLI_ASSOC)){
 							echo "<tr>";
 							echo "<td><input type='radio' class='flat-red' name='num[]' value='".$row['mID']."' required></td>";
-							//echo "<td>".$row['id']."</td>";
-							//echo "<td><img height='100px' width='100px' src=".$row['photo']."></td>";
 							
 							echo "<td>".$row['engineNo']."</td>";
 							echo "<td>".$row['mName']."</td>";
@@ -70,11 +101,7 @@ if(isset($_GET['error'])){
 							
 							//echo "<td>".$row['chassisNo']."</td>";
 							echo "<td>".$row['color']."</td>";
-							//echo "<td>".$row['stock_date']."</td>";
-							//echo "<td>".$row['stock_time']."</td>";
-							//echo "<td>".$row['branch']."</td>";
-							
-						   echo "</tr>";
+							echo "</tr>";
 									}
 						}
 					?>
@@ -105,7 +132,7 @@ if(isset($_GET['error'])){
 			<div id="hide">
 				<div class="form-group">
                   <label>Customer Name</label>
-                  <input class="form-control" placeholder="Name" id="name" name="name" type="text" autofocus >
+                  <input class="form-control" placeholder="Name" name="name" type="text" autofocus >
                 </div>
 				<div class="form-group">
                   <label>Email</label>
@@ -113,7 +140,7 @@ if(isset($_GET['error'])){
                 </div>
 				<div class="form-group">
                   <label>NID </label>
-                  <input class="form-control" placeholder="National ID" id="nid" name="nid" type="text"  autofocus >
+                  <input class="form-control" placeholder="National ID" id="nid" name="nid" type="number" min="1" autofocus >
                 </div>
 			</div>
 				<div class="form-group">

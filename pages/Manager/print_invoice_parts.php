@@ -157,14 +157,14 @@
        
       </div> -->
       <!-- /.col -->
-      <div class="col-sm-4 invoice-col">
+      <!-- <div class="col-sm-4 invoice-col">
         <b>Customer</b>
         <br>
     Name : <?php echo $name?><br>
     Phone : <?php echo $phone?><br>
       </div>
-      <!-- /.col -->
-    </div>
+     
+    </div> -->
     <!-- /.row -->
 
     <!-- Table row -->

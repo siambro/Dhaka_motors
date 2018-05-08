@@ -29,17 +29,17 @@
                   <?php
 									
                   $con=mysqli_connect('localhost','root','','dhaka_motors');
-                  $query="select count(id) 
-                      from pre_booking p, sale_info s
-                      where s.pre_book_status=p.id 	
-                      and s.pre_book_status=0
+                  $query="select count(p.id) 
+                  from pre_booking p, sale_info s
+                  where s.pre_book_status=p.status 	
+                  and s.pre_book_status=1
                      ";
                       
                   //$query="select count(mID) from motorcycle_info where branch ='Dhaka' and motorcycle_status=0";
                   $result=mysqli_query($con,$query);
                   if(mysqli_num_rows($result)>0){
                     while($row=mysqli_fetch_array($result, MYSQLI_ASSOC)){
-                      $total=$row['count(id)'];
+                      $total=$row['count(p.id)'];
                       echo "$total";
                     }
                   
@@ -107,10 +107,11 @@
               <?php
 									
                   $con=mysqli_connect('localhost','root','','dhaka_motors');
-                  $query="select count(DISTINCT c.cID) as count
+                  $query="select count(Distinct(c.cID)) as count
                           from motorcycle_info m, customer c 
                           where m.cID= c.cID
-                          group by c.cID
+                          
+                         
                         ";
                       
                   //$query="select count(mID) from motorcycle_info where branch ='Dhaka' and motorcycle_status=0";

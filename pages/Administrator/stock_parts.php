@@ -2,6 +2,58 @@
  include 'layout/head.php';
  
 ?>
+
+<script type="text/javascript">
+	function validate(form)
+	{
+    fail = validatePname(form.pName.value)
+    fail += validateprice(form.price.value)
+		fail += validatequantity(form.quantity.value)
+		
+		if (fail == "") {
+			return true;
+			}
+		else { 
+			alert(fail); 
+		}	
+			return false ;
+	}
+	
+  function validatePname(field){
+		if (field == "") {
+			return "Enter Name\n";
+		}else if (field.length < 3) {
+			return "Name should be more than 5 characters\n";
+		}
+		return "";
+	}
+
+	function validateprice(field) {
+		if(field==""){
+			return "Enter Price\n";
+		}
+		else if (isNaN(field)) {
+			return "Enter Numeric value\n";
+			}
+		else if(field.length < 3 || field.length > 4 )	{
+			return "Price is not accurate\n";
+		}
+		return "";
+	}
+  function validatequantity(field){
+		if (field == "") {
+			return "Enter Quantity\n";
+		}
+    else if (isNaN(field)) {
+			return "Enter Numeric value\n";
+		}else if (field.length < 1) {
+			return "Quantity should be accurate\n";
+		}
+		return "";
+	}
+
+</script>
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -24,9 +76,9 @@
           
 
           <div class="box">
-            <div class="box-header">
+            <!-- <div class="box-header">
               <h3 class="box-title">Data Table With Full Features</h3>
-            </div>
+            </div> -->
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
@@ -92,21 +144,21 @@
         </div>
         <!-- /.col -->
 		<div class="col-md-4">
-		<div class="box box-warning">
+		<div class="box box-success">
             <div class="box-header with-border">
               <h3 class="box-title">Parts</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <form role="form" action="partsStockManager.php" method="POST">
+              <form role="form" action="partsStockManager.php" method="POST" onsubmit="return validate(this)">
                 
                 <!-- select -->
                 <div class="form-group">
                   <label>Motorcycle Type</label>
-                  <select class="form-control" name="pType">
+                  <select class="form-control" name="pType" required>
                     <option value="">Select Type</option>;
-					<option value="Engine">EngineParts</option>;
-					<option value="Body">Body Parts</option>;
+										<option value="Engine">EngineParts</option>;
+										<option value="Body">Body Parts</option>;
                   </select>
                 </div>
 				
@@ -116,10 +168,10 @@
                   <input type="text" class="form-control" name="pName" placeholder="" required>
                 </div><div class="form-group">
                   <label>Unit price</label>
-                  <input type="number" class="form-control" name="price" placeholder="" required>
+                  <input type="number" class="form-control" name="price" min="1" placeholder="" required>
                 </div><div class="form-group">
                   <label>Quantity</label>
-                  <input type="number" class="form-control" name="quantity" placeholder="" required>
+                  <input type="number" class="form-control" name="quantity" min="1" placeholder="" required>
                 </div>
 				
 				<div class="form-group">

@@ -7,12 +7,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Pre-Book List
-        <small>Booking</small>
+        Pre-Book sale
+        <small>List</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li class="active">Pre-Book</li>
+        <li class="active">Pre-Book Sale</li>
       </ol>
     </section>
 
@@ -23,9 +23,9 @@
         <div class="col-xs-12">
      
           <div class="box box-primary">
-            <div class="box-header with-border">
+            <!-- <div class="box-header with-border">
               <h3 class="box-title">Bookings</h3>
-            </div>
+            </div> -->
             <!-- /.box-header -->
             <div class="box-body">
 			 

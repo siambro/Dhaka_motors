@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(isset($_POST['return']))
+if((isset($_POST['return'])) && (isset($_POST['num'])))
 {
 	$selected=$_POST['num'];
 	$quantity=$_POST['quantity'];
@@ -32,11 +32,12 @@ if(isset($_POST['return']))
 				$result1=mysqli_query($connection,$query1);
 				$result2=mysqli_query($connection,$query2);
 				if($result1 & $result2){
-					header("location: invoice_parts_details.php?saleID=$saleID");
+					header("location: invoice_parts_details.php?saleID=$saleID&returned");
 				}else{
 					echo mysqli_error($connection);
 				}
 			}
+			
 		}else{
 			echo mysqli_error($connection);
 		}
@@ -47,7 +48,8 @@ if(isset($_POST['return']))
 		
 	}	
 		
-}else{
-	header('location: invoice_parts_details.php?error');
+}else if((isset($_POST['return'])) && (!isset($_POST['num']))){
+	$saleID=$_POST['saleID'];
+	header("location: invoice_parts_details.php?saleID=$saleID&error");
 }			
 ?>

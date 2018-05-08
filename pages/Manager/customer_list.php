@@ -43,6 +43,12 @@
 													group by c.cID
 																	
 													";
+									// $query="
+									// select count(c.cID) as count
+                  //         from motorcycle_info m, customer c 
+                  //         where m.cID= c.cID
+                  //         and m.cID > 0
+									// ";				
 											
 
 									//$query="select * from motorcycle_info where branch='Dhaka' and mID='$val'";

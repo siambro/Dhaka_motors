@@ -27,9 +27,9 @@ if(isset($_GET['error'])){
 							
 				
 							<div class="box">
-								<div class="box-header">
+								<!-- <div class="box-header">
 									<h3 class="box-title">Motorcycle</h3>
-								</div>
+								</div> -->
 								<!-- /.box-header -->
 								<div class="box-body">
 					
@@ -135,6 +135,65 @@ if(isset($_GET['error'])){
         </form>
       </div>
       <!-- /.row -->
+
+			<div class="row">
+			<div class="col-xs-2"></div>
+			<div class="col-xs-8">
+							
+				
+							<div class="box" align="center">
+								<div class="box-header">
+									<h3 class="box-title">Distribution List</h3>
+								</div>
+								<!-- /.box-header -->
+								<div class="box-body">
+					
+									<table id="example1" class="table table-striped">
+										<thead>
+										<tr>
+											<th>#</th>
+											<th>Date</th>
+											<th>To</th>
+											<th>Amount</th>
+											<th>Details</th>
+										</tr>
+										</thead>
+										<tbody>
+									<?php
+									$con=mysqli_connect('localhost','root','','dhaka_motors');
+									$query="select *, count(s.sID) as amount
+													from distribution d, stock_info s, dealers dl
+													where d.dealer_id=dl.ID
+													and s.dealer_id=dl.ID
+													group by d.distribution_id 
+													";
+
+									//$query="select * from stock where branch='Dhaka'  and motorcycle_status=0";
+										$result=mysqli_query($con,$query);
+										if(mysqli_num_rows($result)>0){
+											while($row=mysqli_fetch_array($result, MYSQLI_ASSOC)){
+											echo "<tr>";
+											
+											echo "<td>".$row['distribution_id']."</td>";
+											echo "<td>".$row['date']."</td>";
+											echo "<td>".$row['dealerName']."</td>";
+											echo "<td>".$row['amount']."</td>";
+											echo "<td><a href='invoice_distribution.php?distribution_id=".$row['distribution_id']."'><span class='fa fa-ellipsis-h'></span></a></td>";
+										
+										
+											echo "</tr>";
+											}
+										}else{
+									
+										}
+									?>
+								</tbody>
+				
+              </table>
+            </div>
+            <!-- /.box-body -->
+			</div>
+
     </section>
 	
     <!-- /.content -->

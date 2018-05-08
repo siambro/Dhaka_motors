@@ -33,7 +33,7 @@ if((isset($_POST['book'])) && (!isset($_POST['checked']))){
 		
 		$query2="insert into pre_booking values('','$mName','$model',NOW(),NOW(),'$h_date',LAST_INSERT_ID(),'1')";
 		
-		$query4="SELECT MAX(id) FROM pre_booking";
+		$query4="SELECT MAX(id) as id FROM pre_booking";
 		$result4=mysqli_query($connection,$query4);
 			if($result4){
 			$row=mysqli_fetch_array($result4,MYSQLI_ASSOC);

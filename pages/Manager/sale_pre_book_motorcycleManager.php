@@ -1,6 +1,6 @@
 <?php
 	
-if(isset($_POST['num']))
+if((isset($_POST['sale'])) && (isset($_POST['num'])))
 {
 	$selected=$_POST['num'];
 		
@@ -50,6 +50,7 @@ if(isset($_POST['num']))
 				if($result){
 					$row=mysqli_fetch_array($result,MYSQLI_ASSOC);
 					$cID=$row['cID'];
+					$id=$row['id'];
 					$saleID=$row['saleID'];
 					$a=$row['amount'];
 					
@@ -59,8 +60,7 @@ if(isset($_POST['num']))
 					$year = date('Y')+2;
 					$warranty = $year.'/'.$date;
 					
-				
-					
+						
 					$query1="update motorcycle_info set cID= '$cID', warranty='$warranty' where mID= '$mID'";
 					
 					$query2="update sale_info set sale_date=NOW(), sale_time=NOW(), amount='$amount'";
@@ -68,13 +68,14 @@ if(isset($_POST['num']))
 					
 					$query4="update motorcycle_info set saleID= '$saleID' where mID= '$mID'";
 					
+
 					//$result=mysqli_query($connection,$query);
 					$result1=mysqli_query($connection,$query1);
 					$result2=mysqli_query($connection,$query2);
 					$result3=mysqli_query($connection,$query3);
 					$result4=mysqli_query($connection,$query4);
 					if($result1 & $result2 & $result3 & $result4){
-						header("location: invoice_pre_book_sale.php?mID=$mID");
+						header("location: invoice_pre_booked_sale_details.php?id=$id");
 					}else{
 						mysqli_error($connection);
 					}
@@ -89,7 +90,23 @@ if(isset($_POST['num']))
 		
 	}	
 		
-}else{
-	header('location: pre_book_sale.php?error');
+}else if((isset($_POST['sale'])) && (!isset($_POST['num']))){
+	// $phone=$_POST['phone'];
+	// $connection=mysqli_connect("localhost","root","","dhaka_motors");
+	// $query="select * from customer c, sale_info s, pre_booking p
+				
+	// 					where c.cID=p.cID
+	// 					and s.pre_book_status=p.id
+	// 					and phone = '$phone'";
+						
+	// 			$result=mysqli_query($connection,$query);
+	// 			if($result){
+	// 				$row=mysqli_fetch_array($result,MYSQLI_ASSOC);
+	// 				$cID=$row['cID'];
+	// 				$saleID=$row['saleID'];
+				
+
+	header("location: pre_book_list.php?error");
+				// }
 }			
 ?>

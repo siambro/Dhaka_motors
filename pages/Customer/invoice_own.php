@@ -6,11 +6,11 @@ date_default_timezone_set('Asia/Dhaka');
 		$connection=mysqli_connect("localhost","root","","dhaka_motors");
 		$mID=$_GET['mID'];
 		$query="select * 
-				from motorcycle_info m, customer c, sale_info s, discount d 
-				where m.cID=c.cID 
-				and m.saleID=s.saleID
-				
-				and m.mID='$mID'";
+    from motorcycle_info m, customer c, sale_info s
+    where m.cID=c.cID 
+    and m.saleID=s.saleID
+    
+    and m.mID='$mID'";
 
 		//$query="select * from motorcycle_info where branch='Dhaka' and mID='$val'";
 		$result=mysqli_query($connection,$query);

@@ -91,7 +91,7 @@ $conn=mysqli_connect("localhost", "root", "" , "dhaka_motors");
 					 $query="select * 
 							from motorcycle_info m, stock_info s 
 							where m.sID=s.sID 
-							and s.branch_id=1
+							and s.dealer_id=1
 							and m.saleID = 0
 							and m.mName = '$m_name'";
 
