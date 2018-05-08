@@ -24,13 +24,7 @@ if((isset($_POST['return'])) && (isset($_POST['num'])))
 		if(mysqli_num_rows($result)>0){
 			$price = 0;
 			$total = $row['amount'];
-			// $query="select * 
-			// from sale_info 
-			// where saleID='$saleID'";
-			// $result=mysqli_query($connection,$query);
-			// if(mysqli_num_rows($result)>0){
-			// 	$row=mysqli_fetch_array($result, MYSQLI_ASSOC);
-			// 	$total = $row['amount'];
+			
 
 				while($row=mysqli_fetch_array($result, MYSQLI_ASSOC)){
 					$p=$row['price'];
@@ -58,17 +52,12 @@ if((isset($_POST['return'])) && (isset($_POST['num'])))
 					}
 				}
 				
-			// }else{
-			// 	echo mysqli_error($connection);
-			// }
+		
 				
 		}else{
 			echo mysqli_error($connection);
 		}
 		
-		//$percent = $percentage*($percentage/100);
-		//echo $percent;
-		//exit;
 		
 	}	
 		
