@@ -19,7 +19,7 @@
     <!-- Main content -->
     <section class="content">
       <div class="row">
-	  <form role="form" action="sale_parts_confirmManager.php" method="POST">
+	  	<form role="form" action="sale_parts_confirmManager.php" method="POST">
         <div class="col-xs-12">
      
           <div class="box box-primary">
@@ -32,36 +32,37 @@
               <table class="table table-bordered table-striped">
                 <thead>
                 <tr>
-					<th>Product Name</th>
-					<th>Qty</th>
-					<th >Unit price</th>
-					<th >Sub total Price</th>
+									<th>Product Name</th>
+									<th>Qty</th>
+									<th >Unit price</th>
+									<th >Sub total Price</th>
                 </tr>
                 </thead>
                 <tbody>
-					<?php
-					if(isset($_POST['sale'])){			
+				
+					<?php 	if((isset($_POST['sale'])) && (isset($_POST['num']))){			
+						
 						$quan=$_POST['quantity'];
 						$selected=$_POST['num'];
 					
-					for($i=0; $i<count($selected); $i++){
-						echo "<input type='hidden'  value='". $selected[$i] ."'  name='num[]'>";
-				
-					}
-
-					// for($i=0; $i<count($quan); $i++){
-					// 	echo "<input type='hidden'  value='". $quan[$selected[$i]] ."'  name='quantity[]'>";
-				
-					// }
+						for($i=0; $i<count($selected); $i++){
+							echo "<input type='hidden'  value='". $selected[$i] ."'  name='num[]'>";
 					
-					$FinalTotal = 0;
+						}
+
+						// for($i=0; $i<count($quan); $i++){
+						// 	echo "<input type='hidden'  value='". $quan[$selected[$i]] ."'  name='quantity[]'>";
+					
+						// }
+						
+						$FinalTotal = 0;
+								
+						while(list($key,$val)=@each($selected)){
 							
-					while(list($key,$val)=@each($selected)){
-						
-						$parts_id=$val;
-						
-						
-						$connection=mysqli_connect("localhost", "root", "", "dhaka_motors");	
+							$parts_id=$val;
+							
+							
+							$connection=mysqli_connect("localhost", "root", "", "dhaka_motors");	
 							$query="SELECT * FROM parts_info WHERE parts_id='$parts_id'";
 							$result=mysqli_query($connection,$query);
 							
@@ -100,12 +101,14 @@
 						}
 															
 					}
-					// else{
-					// 	header('Location: sale_parts.php?error');
-					// }
-												
-												
-					?>
+					else if((isset($_POST['sale'])) && (!isset($_POST['num']))){
+						
+						//echo "<script>alert('No parts Selected For Sale')</script>";
+						header('Location: sale_parts.php?error');
+					} 
+					else{
+						//header('location: sale_parts.php');
+					} ?>
 					<tr>
 						<td></td>
 						<td></td>
@@ -130,13 +133,13 @@
             
             <!-- /.box-header -->
             <div class="box-body">	
-				<div class="form-group">			
+				<!-- <div class="form-group">			
 					<input type="text" class="form-control" style="border:none" readonly value="<?php echo $_POST['name']?>" name="name">
 				</div>
 				<div class="form-group">
 					<input type="text" class="form-control" style="border:none" readonly value="<?php echo $_POST['phone']?>" name="phone">
 				</div>	
-				<div class="form-group">
+				<div class="form-group"> -->
 					<!-- <input type="hidden" name="pID" value="<?php echo $row['pID'] ?>"/>		 -->
 					<button type="submit" class="btn btn-lg btn-success btn-block" onclick="return confirm('Are you sure want to Confirm?')" name= "confirm">Confirm</button>
 				</div>

@@ -1,8 +1,11 @@
 <?php 
 include 'layout/head.php';
 
+if(isset($_GET['error'])){
+	echo "<script>alert('No Motorcycle Selected For Sale')</script>";
+}
 
-
+ 
 ?>
   <!-- Content Wrapper. Contains page content -->
  <div class="content-wrapper">
@@ -20,12 +23,23 @@ include 'layout/head.php';
     </section>
 
     <div class="pad margin no-print">
-      <div class="callout callout-info" style="margin-bottom: 0!important;">
+      <!-- <div class="callout callout-info" style="margin-bottom: 0!important;">
         <h4><i class="fa fa-info"></i> Note:</h4>
         This page has been enhanced for printing. Click the print button at the bottom of the invoice to test.
-      </div>
+      </div> -->
+
+
+<?php if(isset($_GET['returned']) == true){?>
+  <div class="alert alert-success alert-dismissible">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h4><i class="icon fa fa-check"></i> Alert!</h4>
+            Successfully returned Information.
+  </div>
+  <?php } ?>
+
     </div>
 
+   
     <!-- Main content -->
     <section class="invoice">
       <!-- title row -->
@@ -41,7 +55,7 @@ include 'layout/head.php';
 
       <div class="row">
         <div class="col-xs-12 table-responsive">
-        <form role="form" action="returnManager.php" method="POST">
+        <form role="form" action="returnManager.1.php" method="POST">
           <table class="table table-striped">
             <thead>
             <tr>
@@ -72,19 +86,21 @@ include 'layout/head.php';
                 $result=mysqli_query($connection,$query);
                 if($result){
                   $FinalTotal = 0;
+                  
+
                   while($row=mysqli_fetch_array($result, MYSQLI_ASSOC)){	
                         
                     $name=$row['name'];
                     $phone=$row['phone'];
-                    
+                    $pquantity = $row['qnt'];
                     echo "<tr>";
                     echo "<td> <input value='".$row['parts_id']."' type='checkbox' name='num[]'> </td>";
                     echo "<td>".$row['parts_name']."</td>";												
-                    echo "<td><input type='number' name='qnt[".$row['parts_id']."]' value='".$row['qnt']."'></td>";
+                    echo "<td><input type='number' name='qnt[".$row['parts_id']."]' value='".$row['qnt']."' readonly></td>";
                     echo "<td>".$row['price']."</td>";
                     $subTotal = $row['qnt']*$row['price'];
                     echo "<td>".$subTotal."</td>";
-                    echo "<td><input type='number' name='quantity[".$row['parts_id']."]' max='".$row['qnt']."' min='0' ></td>";
+                    echo "<td><input type='number' name='quantity[".$row['parts_id']."]' max='".$row['qnt']."' min='0' value='0'></td>";
                     // echo "<td><input type='hidden' name='qnt[".$row['parts_id']."]' value='".$row['qnt']."'></td>";
                   // echo "<td><input type='button' name='return' value=Return></td>";
                     $FinalTotal += $subTotal;
@@ -115,10 +131,14 @@ include 'layout/head.php';
       <!-- info row -->
       <div class="row invoice-info">
         <div class="col-sm-4 invoice-col">
-          <b>Customer</b>
-            <br>
-              Name : <?php echo $name?><br>
-              Phone : <?php echo $phone?><br><br>
+        <?php echo'<b>Total- </b>' .$FinalTotal. '<br/>'; 
+            
+            // if(isset($_GET['returned'])){
+
+
+            // echo'<b>Returned- </b>' .$_GET['u_price'].'<br/>';
+            // }
+            ?>
           </div>
           <!-- /.col -->
           <!-- <div class="col-sm-4 invoice-col">
@@ -126,7 +146,8 @@ include 'layout/head.php';
           </div> -->
           <!-- /.col -->
           <div class="col-sm-4 invoice-col">
-            <?php echo'<b>Total- </b>' .$FinalTotal; ?>
+           
+
           </div>
 
           <div class="col-sm-4 invoice-col">

@@ -28,6 +28,10 @@
 			return "Enter Engine No\n";
 		}else if (field.length < 10 || field.length > 10) {
 			return "Engine No length minimum 10 character long\n";
+
+		}else if (((field.indexOf(".") > 0) && (field.indexOf("@") > 0)) ||/[^a-zA-Z0-9]/.test(field)){
+			return "The Engine No is invalid\n";
+			
 		}
 		return "";
 	}
@@ -38,6 +42,9 @@
 		else if (field.length < 10 || field.length > 10){
 			return "Chassis No length minimum 10 character long\n";
 			
+		}else if (((field.indexOf(".") > 0) && (field.indexOf("@") > 0)) ||/[^a-zA-Z0-9]/.test(field)){
+			return "The Chassis No is invalid\n";
+			
 		}
 		return "";
 	}
@@ -47,6 +54,10 @@
 		}else if (field.length < 3 || field.length > 3) {
 			return "CC must be at least 3 characters\n";
 		}
+		else if (((field.indexOf(".") > 0) && (field.indexOf("@") > 0)) ||/[^0-9]/.test(field)){
+			return "The CC is invalid\n";
+			
+		}
 		return "";
 	}
 	function validatecolor(field){
@@ -54,7 +65,9 @@
 			return "Enter Color\n";
 		}else if (field.length < 3) {
 			return "Color must be more than 3 characters\n";
-		}
+		}else if (!/[a-z]/.test(field) || ! /[A-Z]/.test(field) || /[0-9]/.test(field)) {
+			return "Got Numeric value in Color\n";
+			}
 		return "";
 	}
 	
@@ -67,6 +80,9 @@
 			}
 		else if(field.length < 6 || field.length > 6 )	{
 			return "Price is not accurate\n";
+		}else if (((field.indexOf(".") > 0) && (field.indexOf("@") > 0)) ||/[^0-9]/.test(field)){
+			return "The Price is invalid\n";
+			
 		}
 		return "";
 	}

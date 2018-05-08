@@ -113,7 +113,7 @@ date_default_timezone_set('Asia/Dhaka');
           From
           <address>
             <strong>Dhaka Motors</strong><br>
-            Address: Panthapat<br>
+              Address: Panthapat<br>
               Phone: 1234567890<br>
               Email: dhaka_motors@gmail.com
           </address>

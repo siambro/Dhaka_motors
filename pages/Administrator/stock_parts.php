@@ -76,9 +76,9 @@
           
 
           <div class="box">
-            <div class="box-header">
+            <!-- <div class="box-header">
               <h3 class="box-title">Data Table With Full Features</h3>
-            </div>
+            </div> -->
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
@@ -144,7 +144,7 @@
         </div>
         <!-- /.col -->
 		<div class="col-md-4">
-		<div class="box box-warning">
+		<div class="box box-success">
             <div class="box-header with-border">
               <h3 class="box-title">Parts</h3>
             </div>
@@ -157,8 +157,8 @@
                   <label>Motorcycle Type</label>
                   <select class="form-control" name="pType" required>
                     <option value="">Select Type</option>;
-					<option value="Engine">EngineParts</option>;
-					<option value="Body">Body Parts</option>;
+										<option value="Engine">EngineParts</option>;
+										<option value="Body">Body Parts</option>;
                   </select>
                 </div>
 				
@@ -168,10 +168,10 @@
                   <input type="text" class="form-control" name="pName" placeholder="" required>
                 </div><div class="form-group">
                   <label>Unit price</label>
-                  <input type="number" class="form-control" name="price" placeholder="" required>
+                  <input type="number" class="form-control" name="price" min="1" placeholder="" required>
                 </div><div class="form-group">
                   <label>Quantity</label>
-                  <input type="number" class="form-control" name="quantity" placeholder="" required>
+                  <input type="number" class="form-control" name="quantity" min="1" placeholder="" required>
                 </div>
 				
 				<div class="form-group">
