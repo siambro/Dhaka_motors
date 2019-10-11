@@ -107,18 +107,16 @@
               <?php
 									
                   $con=mysqli_connect('localhost','root','','dhaka_motors');
-<<<<<<< HEAD
+
                   $query="select count(Distinct(c.cID)) as count
                           from motorcycle_info m, customer c 
-                          where m.cID= c.cID
-                          
-                         
-=======
+                          where m.cID= c.cID";
+
                   $query="select count(c.cID) as count
                           from motorcycle_info m, customer c 
                           where m.cID= c.cID
                           and m.cID > 0
->>>>>>> 6563771bfcc78cb26dc3293a6331015d64d8b220
+
                         ";
                       
                   //$query="select count(mID) from motorcycle_info where branch ='Dhaka' and motorcycle_status=0";
