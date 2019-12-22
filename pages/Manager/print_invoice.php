@@ -65,7 +65,7 @@
 //    var_dump($mID);
 
     $query="select * 
-				from motorcycle_info m, customer c, sale_info s, discount d 
+				from motorcycle_info m, customer c, sale_info s
 				where m.cID=c.cID 
 				and m.saleID=s.saleID
 
@@ -95,8 +95,6 @@
         $phone=$row['phone'];
 
         $amount = $row['amount'];
-
-        $percentage = $row['percentage'];
 
         $sale_date= date('d-M-Y');
         $sale_time= date('H:i:s a');
@@ -187,7 +185,7 @@
                         <th>Product Name</th>
                         <th>Qty</th>
                         <th> Total Price</th>
-                        <th>Discount  <?php echo $percentage?>%</th>
+                        <th>Discount </th>
                         <th>Total Amount </th>
                     </tr>
                     </thead>
