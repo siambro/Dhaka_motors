@@ -1,214 +1,218 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Dhaka Motors | Manager</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
-  <!-- Morris chart -->
-  <link rel="stylesheet" href="../../bower_components/morris.js/morris.css">
-  <!-- jvectormap -->
-  <link rel="stylesheet" href="../../bower_components/jvectormap/jquery-jvectormap.css">
-  <!-- Date Picker -->
-  <link rel="stylesheet" href="../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="../../bower_components/bootstrap-daterangepicker/daterangepicker.css">
-  <!-- bootstrap wysihtml5 - text editor -->
-  <link rel="stylesheet" href="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-  
-  <!-- DataTables -->
-  <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-  
-  <!-- JQuery for fade -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dhaka Motors | Manager</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+    <!-- Morris chart -->
+    <link rel="stylesheet" href="../../bower_components/morris.js/morris.css">
+    <!-- jvectormap -->
+    <link rel="stylesheet" href="../../bower_components/jvectormap/jquery-jvectormap.css">
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="../../bower_components/bootstrap-daterangepicker/daterangepicker.css">
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link rel="stylesheet" href="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
-  <!-- Google Font -->
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <!-- JQuery for fade -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
-  
-  
-  
-<?php
-	session_start();
-	$connection = mysqli_connect("localhost", "root", "", "dhaka_motors");
-	include '../functions.php';
-	protect_page();
-?>
-  
-  
-</head>
-<body onload="window.print();">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-<?php 
+    <!-- Google Font -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
 
-date_default_timezone_set('Asia/Dhaka');
-		$connection=mysqli_connect("localhost","root","","dhaka_motors");
-		$mID=$_GET['mID'];
-		$query="select * 
+
+
+    <?php
+    session_start();
+    $connection = mysqli_connect("localhost", "root", "", "dhaka_motors");
+    include '../functions.php';
+    protect_page();
+    ?>
+
+    <?php
+
+
+    date_default_timezone_set('Asia/Dhaka');
+    $connection=mysqli_connect("localhost","root","","dhaka_motors");
+    $mID=$_GET['mID'];
+
+//    var_dump($mID);
+
+    $query="select * 
 				from motorcycle_info m, customer c, sale_info s, discount d 
 				where m.cID=c.cID 
 				and m.saleID=s.saleID
-				and s.dID=d.discount_id
+
 				and m.mID='$mID'";
 
-		//$query="select * from motorcycle_info where branch='Dhaka' and mID='$val'";
-		$result=mysqli_query($connection,$query);
-		if($result){
-			
-			$row=mysqli_fetch_array($result,MYSQLI_ASSOC);	
-			$mID=$row['mID'];
-			$mType=$row['mType'];
-			$mName=$row['mName'];
-			$model=$row['model'];
-			$engineNo=$row['engineNo'];
-			$chassisNo=$row['chassisNo'];
-			$cc=$row['cc'];
-			$color=$row['color'];
-			$price=$row['price'];
-			$warranty=$row['warranty'];
-			
-			
-			$name=$row['name'];
-			$email=$row['email'];
-			$phone=$row['phone'];
-			
-			$amount = $row['amount'];
-			
-			$percentage = $row['percentage'];
-			
-			$sale_date= date('d-M-Y');
-			$sale_time= date('H:i:s a');
-		
-		}else{
-			echo mysqli_error($connection);
-		}
+    //$query="select * from motorcycle_info where branch='Dhaka' and mID='$val'";
+    $result=mysqli_query($connection,$query);
 
-?>
- 
+    if($result){
 
-  <!-- Content Wrapper. Contains page content -->
+        $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
+        $mID=$row['mID'];
+
+        $mType=$row['mType'];
+        $mName=$row['mName'];
+        $model=$row['model'];
+        $engineNo=$row['engineNo'];
+        $chassisNo=$row['chassisNo'];
+        $cc=$row['cc'];
+        $color=$row['color'];
+        $price=$row['price'];
+        $warranty=$row['warranty'];
+
+
+        $name=$row['name'];
+        $email=$row['email'];
+        $phone=$row['phone'];
+
+        $amount = $row['amount'];
+
+        $percentage = $row['percentage'];
+
+        $sale_date= date('d-M-Y');
+        $sale_time= date('H:i:s a');
+
+    }else{
+        echo mysqli_error($connection);
+    }
+
+    ?>
+
+</head>
+<body onload="window.print();">
+
+
+<!-- Content Wrapper. Contains page content -->
 <div class="wrapper">
-     <!-- Main content -->
+    <!-- Main content -->
     <section class="invoice">
-      <!-- title row -->
-      <div class="row">
-        <div class="col-xs-12">
-          <h2 class="page-header">
-            <i class="fa fa-globe"></i> Dhaka Motors
-            <small class="pull-right"><?php echo  date('d-M-Y');?></small>
-          </h2>
+        <!-- title row -->
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="page-header">
+                    <i class="fa fa-globe"></i> Dhaka Motors <?php echo $mID ?>
+                    <small class="pull-right"><?php echo  date('d-M-Y');?></small>
+                </h2>
+            </div>
+            <!-- /.col -->
         </div>
-        <!-- /.col -->
-      </div>
-      <!-- info row -->
-      <div class="row invoice-info">
-        <div class="col-sm-4 invoice-col">
-          From
-          <address>
-            <strong>Dhaka Motors</strong><br>
-            Address: Panthapat<br>
-			Phone: 1234567890<br>
-			Email: dhaka_motors@gmail.com
-          </address>
-          <?php 
-            $query = "SELECT count(mID) serve from service where mID='$mID'";
+        <!-- info row -->
+        <div class="row invoice-info">
+            <div class="col-sm-4 invoice-col">
+                From
+                <address>
+                    <strong>Dhaka Motors</strong><br>
+                    Address: Panthapat<br>
+                    Phone: 1234567890<br>
+                    Email: dhaka_motors@gmail.com
+                </address>
+                <?php
+                $query = "SELECT count(mID) serve from service where mID='$mID'";
                 $result=mysqli_query($connection,$query);
                 if(mysqli_num_rows($result)>0){
-                  $row=mysqli_fetch_array($result,MYSQLI_ASSOC);	
-                  $serve=$row['serve'];
-                  $service = 5- $serve;
+                    $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
+                    $serve=$row['serve'];
+                    $service = 5- $serve;
                 }else{
-                  $service = 5;
+                    $service = 5;
                 }
-          ?>
-          <!-- Service Taken : <b> <?php echo 5 - $service?></b><br> -->
-          Free Service remaining :<b> <?php echo $service?></b>
-        </div>
-        <!-- /.col -->
-        <div class="col-sm-4 invoice-col">
-          To
-          <address>
-            <strong><?php echo $name;?></strong><br>
-            <?php echo $email;?><br>
-            <?php echo $phone;?><br>
-            
-          </address>
-        </div>
-        <!-- /.col -->
-        <div class="col-sm-4 invoice-col">
-          <b>Invoice #007612</b><br>
-          <br>
-          <b>Motorcycle Name: </b> <?php echo $mName. ' ' .$model?><br>
-          <b>ID: </b> <?php echo $mID?><br>
-          <b>Engine: </b> <?php echo $engineNo?><br>
-		  <b>Chassis: </b> <?php echo $chassisNo?><br>
-			<b>CC: </b> <?php echo $cc?><br>
-			<b>Color: </b> <?php echo $color?><br>
-			<br>
-			<b>Issue Date : </b> <?php echo $sale_date?><br>
-			<b>Issue Time : </b> <?php echo $sale_time?><br>
-			<b>Warranty until : </b> <?php echo $warranty?><br>
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
+                ?>
+                <!-- Service Taken : <b> <?php echo 5 - $service?></b><br> -->
+                Free Service remaining :<b> <?php echo $service?></b>
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-4 invoice-col">
+                To
+                <address>
+                    <strong><?php echo $name;?></strong><br>
+                    <?php echo $email;?><br>
+                    <?php echo $phone;?><br>
 
-      <!-- Table row -->
-      <div class="row">
-        <div class="col-xs-12 table-responsive">
-          <table class="table table-striped">
-            <thead>
-            <tr>
-              <th>Product Name</th>
-			<th>Qty</th>
-			<th> Total Price</th>
-			<th>Discount  <?php echo $percentage?>%</th>
-			<th>Total Amount </th>
-            </tr>
-            </thead>
-            <tbody>
-				<tr>
-					<td> <?php echo $mName?> </td>
-					<td> 1 </td>
-					<td><?php echo $price. ' Tk'?></td>
-					<td> <?php echo $price - $amount.' Tk'?> </td>
-					<td> <?php echo $amount. ' Tk'?> </td>
-					
-				</tr>
-			</tbody>
-			
-          </table>
+                </address>
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-4 invoice-col">
+                <b>Invoice #007612</b><br>
+                <br>
+                <b>Motorcycle Name: </b> <?php echo $mName. ' ' .$model?><br>
+                <b>ID: </b> <?php echo $mID?><br>
+                <b>Engine: </b> <?php echo $engineNo?><br>
+                <b>Chassis: </b> <?php echo $chassisNo?><br>
+                <b>CC: </b> <?php echo $cc?><br>
+                <b>Color: </b> <?php echo $color?><br>
+                <br>
+                <b>Issue Date : </b> <?php echo $sale_date?><br>
+                <b>Issue Time : </b> <?php echo $sale_time?><br>
+                <b>Warranty until : </b> <?php echo $warranty?><br>
+            </div>
+            <!-- /.col -->
         </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-      <!-- this row will not appear when printing -->
+        <!-- /.row -->
+
+        <!-- Table row -->
+        <div class="row">
+            <div class="col-xs-12 table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Qty</th>
+                        <th> Total Price</th>
+                        <th>Discount  <?php echo $percentage?>%</th>
+                        <th>Total Amount </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td> <?php echo $mName?> </td>
+                        <td> 1 </td>
+                        <td><?php echo $price. ' Tk'?></td>
+                        <td> <?php echo $price - $amount.' Tk'?> </td>
+                        <td> <?php echo $amount. ' Tk'?> </td>
+
+                    </tr>
+                    </tbody>
+
+                </table>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+        <!-- this row will not appear when printing -->
     </section>
 </div>
-  <!-- /.control-sidebar -->
-  <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
+<!-- /.control-sidebar -->
+<!-- Add the sidebar's background. This div must be placed
+     immediately after the control sidebar -->
 
 <!-- jQuery 3 -->
 <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
@@ -216,7 +220,7 @@ date_default_timezone_set('Asia/Dhaka');
 <script src="../../bower_components/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
-  $.widget.bridge('uibutton', $.ui.button);
+    $.widget.bridge('uibutton', $.ui.button);
 </script>
 <!-- Bootstrap 3.3.7 -->
 <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -252,17 +256,17 @@ date_default_timezone_set('Asia/Dhaka');
 <script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 
 <script>
-  $(function () {
-    $('#example1').DataTable()
-    $('#example2').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
+    $(function () {
+        $('#example1').DataTable()
+        $('#example2').DataTable({
+            'paging'      : true,
+            'lengthChange': false,
+            'searching'   : false,
+            'ordering'    : true,
+            'info'        : true,
+            'autoWidth'   : false
+        })
     })
-  })
 </script>
 
 </body>
